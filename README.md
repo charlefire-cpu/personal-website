@@ -49,24 +49,29 @@ npm run preview
 ```text
 personal-website/
 ├── public/
-│   └── resume/              # Place Charmaine-Buffe-Resume.pdf here
+│   ├── favicon.svg
+│   └── resume/
+│       └── Charmaine-Buffe-Resume.pdf
 ├── src/
-│   ├── components/          # Reusable UI and section components
-│   │   ├── ui/              # Shared primitives (Button, Section)
+│   ├── components/
+│   │   ├── ui/                 # Button, Section
 │   │   ├── Navbar.tsx
 │   │   ├── Hero.tsx
 │   │   ├── About.tsx
-│   │   ├── Skills.tsx
+│   │   ├── CoreCompetencies.tsx
+│   │   ├── TechnicalSkills.tsx
 │   │   ├── Experience.tsx
 │   │   ├── Education.tsx
 │   │   ├── Resume.tsx
 │   │   ├── Contact.tsx
 │   │   └── Footer.tsx
 │   ├── data/
-│   │   └── profile.ts       # All site content in one place
+│   │   └── profile.ts          # All site content
 │   ├── App.tsx
 │   ├── main.tsx
 │   └── index.css
+├── docs/
+│   └── personal_website_documentation.md
 ├── index.html
 ├── package.json
 └── vite.config.ts
@@ -76,10 +81,6 @@ personal-website/
 
 Edit `src/data/profile.ts` to update text, skills, experience, and contact details without changing component code.
 
-## Resume
-
-Add your resume PDF to `public/resume/Charmaine-Buffe-Resume.pdf` for the download button to work.
-
 ## Documentation
 
-See `personal_website_documentation.md` for full project specifications.
+See `docs/personal_website_documentation.md` for full project specifications.

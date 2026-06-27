@@ -36,8 +36,8 @@ export interface ContactLabels {
   location: string
 }
 
-export const RESUME_PATH = '/resume/Charmaine-Buffe-Resume.pdf'
-export const RESUME_FILENAME = 'Charmaine-Buffe-Resume.pdf'
+const RESUME_PATH = '/resume/Charmaine-Buffe-Resume.pdf'
+const RESUME_FILENAME = 'Charmaine-Buffe-Resume.pdf'
 
 export interface Profile {
   name: string
@@ -214,7 +214,7 @@ export const profile: Profile = {
     message:
       'Interested in working together or discussing professional opportunities? Feel free to reach out through email or connect with me professionally.',
     email: 'charmbuffe@yahoo.com',
-    linkedin: 'https://linkedin.com/in/charmbuffe',
+    linkedin: 'https://www.linkedin.com/in/charmbuffe',
     location: 'Cavite, Philippines',
     labels: {
       email: 'Email',
