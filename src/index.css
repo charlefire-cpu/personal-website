@@ -532,7 +532,7 @@ body {
 
   /* ── Navbar ── */
   .navbar {
-    @apply sticky top-0 z-50 border-b border-border/60 bg-white/90 shadow-[var(--shadow-xs)] backdrop-blur-lg motion-reduce:transition-none;
+    @apply sticky top-0 z-50 border-b border-border/60 bg-white/95 shadow-[var(--shadow-xs)] motion-reduce:transition-none;
     transition:
       box-shadow 0.3s ease,
       border-color 0.3s ease,
@@ -540,15 +540,20 @@ body {
   }
 
   .navbar--scrolled {
-    @apply border-border/80 bg-white/95 shadow-[var(--shadow-navbar)];
+    @apply border-border/80 bg-white shadow-[var(--shadow-navbar)];
   }
 
   .navbar-brand {
-    @apply inline-flex shrink-0 items-center rounded-lg transition-opacity duration-200 ease-out hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 motion-reduce:transition-none;
+    @apply flex shrink-0 items-center bg-transparent p-0 shadow-none;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .navbar-brand-logo {
-    @apply h-8 w-auto max-w-[9.5rem] object-contain sm:h-10 sm:max-w-[11rem];
+  .navbar-brand:focus-visible {
+    @apply rounded-sm outline-2 outline-offset-2 outline-accent;
+  }
+
+  .navbar-brand img {
+    @apply block border-0 bg-transparent p-0 shadow-none;
   }
 
   .nav-link-item {

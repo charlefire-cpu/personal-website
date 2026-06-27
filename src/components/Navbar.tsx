@@ -78,7 +78,7 @@ export default function Navbar() {
           <img
             src={logoSrc}
             alt="Charm logo"
-            className="navbar-brand-logo"
+            className="h-9 w-auto object-contain sm:h-10"
             decoding="async"
           />
         </a>
