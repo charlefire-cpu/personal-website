@@ -1,4 +1,5 @@
 import { profile } from '../data/profile'
+import { siteImages, toBackgroundImageUrl } from '../config/images'
 import Button from './ui/Button'
 import { ArrowDownTrayIcon, ArrowRightIcon } from './ui/icons'
 
@@ -15,9 +16,11 @@ export default function Hero() {
       className="hero-section"
       aria-labelledby="hero-heading"
     >
-      <div className="hero-scene" aria-hidden="true">
-        <div className="hero-scene-grid" />
-      </div>
+      <div
+        className="hero-background"
+        style={{ backgroundImage: toBackgroundImageUrl(siteImages.heroBg) }}
+        aria-hidden="true"
+      />
 
       <div className="hero-overlay" aria-hidden="true" />
 

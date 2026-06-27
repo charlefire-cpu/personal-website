@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data/profile'
 
+// TODO: Replace public/images/logo.png with a truly transparent PNG if a checkerboard
+// or solid box still appears — the current file has that pattern baked into the image.
+// CSS cannot remove a background that is part of the image pixels.
 const logoSrc = `${import.meta.env.BASE_URL}images/logo.png`
 
 export default function Navbar() {
@@ -71,7 +74,7 @@ export default function Navbar() {
       >
         <a
           href="#home"
-          className="navbar-brand"
+          className="flex shrink-0 items-center"
           onClick={closeMenu}
           aria-label="Home"
         >
