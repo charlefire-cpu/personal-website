@@ -193,10 +193,42 @@ body {
 
   /* ── Hero ── */
   .hero-section {
-    @apply relative scroll-mt-[4.5rem] overflow-hidden border-b border-border bg-white sm:scroll-mt-20 lg:scroll-mt-[5.5rem];
+    @apply relative isolate flex min-h-[min(85vh,42rem)] scroll-mt-[4.5rem] items-center overflow-hidden border-b border-border sm:min-h-[min(88vh,44rem)] sm:scroll-mt-20 lg:scroll-mt-[5.5rem];
   }
 
-  .hero-accent {
-    @apply pointer-events-none absolute inset-x-0 top-0 h-1 bg-accent;
+  .hero-background {
+    @apply absolute inset-0 bg-cover bg-center bg-no-repeat;
+  }
+
+  .hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-br from-primary-dark/92 via-primary-dark/82 to-primary/70;
+  }
+
+  .hero-content {
+    @apply relative z-10 w-full py-24 sm:py-28 lg:py-32;
+  }
+
+  .hero-inner {
+    @apply mx-auto max-w-3xl text-center;
+  }
+
+  .hero-name {
+    @apply text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl md:leading-tight lg:text-[3.25rem];
+  }
+
+  .hero-role {
+    @apply mt-4 text-lg font-medium tracking-tight text-white/90 sm:mt-5 sm:text-xl md:text-2xl;
+  }
+
+  .hero-summary {
+    @apply mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:mt-8 sm:text-lg;
+  }
+
+  .hero-actions {
+    @apply mt-10 flex w-full flex-col gap-3 sm:mt-12 sm:w-auto sm:flex-row sm:justify-center;
+  }
+
+  .hero-fade {
+    @apply pointer-events-none absolute right-0 bottom-0 left-0 z-[1] h-24 bg-gradient-to-t from-white to-transparent sm:h-28;
   }
 }

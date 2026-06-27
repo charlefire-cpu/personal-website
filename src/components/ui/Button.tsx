@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react'
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline'
+type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'outline-light'
 
 interface BaseProps {
   children: ReactNode
@@ -23,6 +23,8 @@ const variantStyles: Record<ButtonVariant, string> = {
     'bg-primary text-white shadow-[var(--shadow-xs)] hover:bg-primary-dark hover:shadow-[var(--shadow-sm)] focus-visible:ring-primary',
   outline:
     'border border-border bg-white text-primary shadow-[var(--shadow-xs)] hover:border-accent/40 hover:text-accent focus-visible:ring-accent',
+  'outline-light':
+    'border border-white/35 bg-white/10 text-white backdrop-blur-sm hover:border-white/55 hover:bg-white/15 focus-visible:ring-white focus-visible:ring-offset-primary-dark',
 }
 
 const baseStyles =
