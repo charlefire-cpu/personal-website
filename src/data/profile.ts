@@ -36,7 +36,7 @@ export interface ContactLabels {
   location: string
 }
 
-const RESUME_PATH = '/resume/Charmaine-Buffe-Resume.pdf'
+const RESUME_PATH = `${import.meta.env.BASE_URL}resume/Charmaine-Buffe-Resume.pdf`
 const RESUME_FILENAME = 'Charmaine-Buffe-Resume.pdf'
 
 export interface Profile {
