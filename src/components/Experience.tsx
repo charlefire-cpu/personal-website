@@ -12,7 +12,7 @@ export default function Experience() {
   const earlierRoles = profile.experience.filter((role) => role.compact)
 
   return (
-    <Section id={id} title={title} alternate>
+    <Section id={id} title={title} tone="experience">
       <div className="relative min-w-0">
         <div className="timeline-line" aria-hidden="true" />
 

@@ -1,5 +1,13 @@
 import type { ReactNode } from 'react'
 
+export type SectionTone =
+  | 'white'
+  | 'surface'
+  | 'tinted'
+  | 'gradient'
+  | 'experience'
+  | 'contact'
+
 interface SectionProps {
   id?: string
   title: string
@@ -7,8 +15,19 @@ interface SectionProps {
   description?: string
   children: ReactNode
   className?: string
-  alternate?: boolean
+  tone?: SectionTone
 }
+
+const toneClasses: Record<SectionTone, string> = {
+  white: 'section-tone-white',
+  surface: 'section-tone-surface',
+  tinted: 'section-tone-tinted',
+  gradient: 'section-tone-gradient',
+  experience: 'section-tone-experience',
+  contact: 'section-tone-contact',
+}
+
+const texturedTones: SectionTone[] = ['tinted', 'experience', 'contact']
 
 export default function Section({
   id,
@@ -17,17 +36,22 @@ export default function Section({
   description,
   children,
   className = '',
-  alternate = false,
+  tone = 'white',
 }: SectionProps) {
   const headingId = id ? `${id}-heading` : undefined
+  const showTexture = texturedTones.includes(tone)
 
   return (
     <section
       id={id}
-      className={`section-base ${alternate ? 'section-surface' : 'bg-white'} ${className}`}
+      className={`section-base ${toneClasses[tone]} ${className}`}
       aria-labelledby={headingId}
     >
-      <div className="page-container">
+      {showTexture && (
+        <div className="section-texture" aria-hidden="true" />
+      )}
+
+      <div className="page-container relative z-[1]">
         <header className="mb-10 sm:mb-12 lg:mb-14">
           {eyebrow && <p className="section-eyebrow">{eyebrow}</p>}
           <h2 id={headingId} className="section-heading">

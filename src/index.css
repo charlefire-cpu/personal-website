@@ -117,11 +117,65 @@ body {
 
   /* ── Sections ── */
   .section-base {
-    @apply relative scroll-mt-[4.5rem] border-t border-border py-20 sm:scroll-mt-20 sm:py-24 lg:scroll-mt-[5.5rem] lg:py-28;
+    @apply relative isolate scroll-mt-[4.5rem] py-20 sm:scroll-mt-20 sm:py-24 lg:scroll-mt-[5.5rem] lg:py-28;
   }
 
-  .section-surface {
+  .section-texture {
+    @apply pointer-events-none absolute inset-0 opacity-60;
+    background-image: radial-gradient(rgb(13 148 136 / 0.055) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  .section-tone-white {
+    @apply bg-white;
+  }
+
+  .section-tone-surface {
     @apply bg-surface;
+  }
+
+  .section-tone-tinted {
+    background: linear-gradient(
+      180deg,
+      rgb(240 253 250 / 0.85) 0%,
+      var(--color-surface) 55%,
+      rgb(248 250 252 / 1) 100%
+    );
+  }
+
+  .section-tone-gradient {
+    background: linear-gradient(180deg, white 0%, var(--color-surface) 100%);
+  }
+
+  .section-tone-experience {
+    background:
+      radial-gradient(ellipse 80% 55% at 100% 0%, rgb(13 148 136 / 0.07), transparent 55%),
+      radial-gradient(ellipse 60% 45% at 0% 100%, rgb(15 23 42 / 0.04), transparent 50%),
+      linear-gradient(180deg, var(--color-surface-alt) 0%, var(--color-surface) 100%);
+  }
+
+  .section-tone-contact {
+    background:
+      radial-gradient(ellipse 90% 70% at 50% 0%, rgb(13 148 136 / 0.08), transparent 60%),
+      linear-gradient(165deg, var(--color-surface) 0%, white 45%, var(--color-accent-soft) 100%);
+  }
+
+  .section-tone-experience .timeline-line {
+    @apply w-px bg-gradient-to-b from-accent/50 via-accent/20 to-border;
+  }
+
+  .section-tone-experience .timeline-dot {
+    @apply ring-4 ring-white/80;
+  }
+
+  .section-tone-tinted .card,
+  .section-tone-experience .card,
+  .section-tone-contact .card {
+    @apply border-white/80 shadow-[var(--shadow-md)];
+  }
+
+  .section-tone-contact .icon-circle {
+    @apply border-accent/15 bg-white text-accent;
   }
 
   /* ── Cards ── */

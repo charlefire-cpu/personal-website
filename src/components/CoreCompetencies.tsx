@@ -5,7 +5,7 @@ export default function CoreCompetencies() {
   const { id, title } = profile.sections.coreCompetencies
 
   return (
-    <Section id={id} title={title} alternate>
+    <Section id={id} title={title} tone="tinted">
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
         {profile.competencies.map((competency) => (
           <li

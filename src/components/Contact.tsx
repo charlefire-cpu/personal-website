@@ -73,7 +73,7 @@ export default function Contact() {
   }>
 
   return (
-    <Section id={id} title={title} description={message}>
+    <Section id={id} title={title} tone="contact" description={message}>
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
         {contactItems.map((item) => {
           const Icon = iconMap[item.label] ?? EmailIcon

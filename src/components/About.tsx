@@ -5,7 +5,7 @@ export default function About() {
   const { id, title } = profile.sections.about
 
   return (
-    <Section id={id} title={title}>
+    <Section id={id} title={title} tone="white">
       <div className="card max-w-3xl">
         <div className="space-y-5 text-body sm:space-y-6">
           {profile.about.map((paragraph) => (

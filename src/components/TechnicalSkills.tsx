@@ -5,7 +5,7 @@ export default function TechnicalSkills() {
   const { title } = profile.sections.technicalSkills
 
   return (
-    <Section title={title}>
+    <Section title={title} tone="gradient">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {profile.skillGroups.map((group) => (
           <div key={group.category} className="card min-w-0">

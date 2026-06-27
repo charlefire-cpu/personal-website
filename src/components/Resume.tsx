@@ -7,7 +7,7 @@ export default function Resume() {
   const { description, filePath, fileName, buttonLabel } = profile.resume
 
   return (
-    <Section id={id} title={title} alternate>
+    <Section id={id} title={title} tone="surface">
       <div className="card max-w-2xl">
         <p className="text-body">{description}</p>
         <div className="mt-6 border-t border-border pt-6 sm:mt-8 sm:pt-8">
