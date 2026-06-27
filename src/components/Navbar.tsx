@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data/profile'
 
+const logoSrc = `${import.meta.env.BASE_URL}images/logo.png`
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -71,8 +73,14 @@ export default function Navbar() {
           href="#home"
           className="navbar-brand"
           onClick={closeMenu}
+          aria-label="Home"
         >
-          {profile.navBrand}
+          <img
+            src={logoSrc}
+            alt="Charm logo"
+            className="navbar-brand-logo"
+            decoding="async"
+          />
         </a>
 
         <ul className="hidden items-center gap-0.5 lg:flex">
