@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react'
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost'
+type ButtonVariant = 'primary' | 'secondary' | 'outline'
 
 interface BaseProps {
   children: ReactNode
@@ -18,17 +18,15 @@ type ButtonProps = ButtonAsButton | ButtonAsLink
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-accent text-white shadow-[var(--shadow-card)] hover:bg-accent-hover hover:shadow-[var(--shadow-card-hover)] focus-visible:ring-accent motion-safe:hover:-translate-y-0.5',
+    'bg-accent text-white shadow-[var(--shadow-xs)] hover:bg-accent-hover hover:shadow-[var(--shadow-sm)] focus-visible:ring-accent',
   secondary:
-    'bg-primary text-white shadow-[var(--shadow-card)] hover:bg-primary-dark hover:shadow-[var(--shadow-card-hover)] focus-visible:ring-primary motion-safe:hover:-translate-y-0.5',
+    'bg-primary text-white shadow-[var(--shadow-xs)] hover:bg-primary-dark hover:shadow-[var(--shadow-sm)] focus-visible:ring-primary',
   outline:
-    'border-2 border-accent/30 bg-white text-accent hover:border-accent hover:bg-accent-soft hover:shadow-[var(--shadow-soft)] focus-visible:ring-accent motion-safe:hover:-translate-y-0.5',
-  ghost:
-    'border border-white/25 bg-white/10 text-white backdrop-blur-sm hover:border-white/40 hover:bg-white/20 focus-visible:ring-white motion-safe:hover:-translate-y-0.5',
+    'border border-border bg-white text-primary shadow-[var(--shadow-xs)] hover:border-accent/40 hover:text-accent focus-visible:ring-accent',
 }
 
 const baseStyles =
-  'inline-flex min-w-0 items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-300 ease-out motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 sm:px-7'
+  'btn-base focus-visible:ring-offset-2'
 
 export default function Button({
   children,

@@ -8,7 +8,6 @@ interface SectionProps {
   children: ReactNode
   className?: string
   alternate?: boolean
-  pattern?: boolean
 }
 
 export default function Section({
@@ -19,29 +18,17 @@ export default function Section({
   children,
   className = '',
   alternate = false,
-  pattern = false,
 }: SectionProps) {
   const headingId = id ? `${id}-heading` : undefined
-
-  const bgClasses = alternate
-    ? 'section-bg-gradient section-bg-pattern'
-    : 'bg-white'
 
   return (
     <section
       id={id}
-      className={`relative scroll-mt-[4.5rem] py-16 sm:scroll-mt-[5.5rem] sm:py-20 md:py-24 lg:py-28 ${bgClasses} ${className}`}
+      className={`section-base ${alternate ? 'section-surface' : 'bg-white'} ${className}`}
       aria-labelledby={headingId}
     >
-      {pattern && !alternate && (
-        <div
-          className="pointer-events-none absolute inset-0 section-bg-pattern opacity-50"
-          aria-hidden="true"
-        />
-      )}
-
-      <div className="page-container relative">
-        <header className="mb-10 sm:mb-12 md:mb-14">
+      <div className="page-container">
+        <header className="mb-10 sm:mb-12 lg:mb-14">
           {eyebrow && <p className="section-eyebrow">{eyebrow}</p>}
           <h2 id={headingId} className="section-heading">
             {title}
