@@ -21,7 +21,6 @@ export default function Resume() {
             href={filePath}
             download={fileName}
             variant="primary"
-            className="w-full sm:w-auto"
             aria-label={`${buttonLabel}: ${fileName}`}
           >
             <ArrowDownTrayIcon className="btn-icon btn-icon--down" />

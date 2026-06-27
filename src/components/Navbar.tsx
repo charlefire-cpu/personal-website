@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data/profile'
 
-const SCROLL_THRESHOLD = 48
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
   const [activeHref, setActiveHref] = useState('#home')
 
   const closeMenu = () => setIsOpen(false)
@@ -16,13 +13,6 @@ export default function Navbar() {
       document.body.style.overflow = ''
     }
   }, [isOpen])
-
-  useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > SCROLL_THRESHOLD)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     if (!isOpen) return
@@ -63,17 +53,15 @@ export default function Navbar() {
     return () => observer.disconnect()
   }, [])
 
-  const navbarState = isScrolled ? 'navbar--scrolled' : 'navbar--hero'
-
   return (
-    <header className={`navbar ${navbarState}`}>
+    <header className="navbar">
       <nav
         className="page-container flex h-14 items-center justify-between gap-4 sm:h-[3.75rem]"
         aria-label="Main navigation"
       >
         <a
           href="#home"
-          className={`navbar-brand ${isScrolled ? 'navbar-brand--scrolled' : 'navbar-brand--hero'}`}
+          className="navbar-brand"
           onClick={closeMenu}
         >
           {profile.navBrand}
@@ -87,9 +75,7 @@ export default function Navbar() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className={`nav-link-item ${isScrolled ? 'nav-link-item--scrolled' : 'nav-link-item--hero'} ${
-                    isActive ? 'nav-link-item--active' : ''
-                  }`}
+                  className={`nav-link-item ${isActive ? 'nav-link-item--active' : ''}`}
                   aria-current={isActive ? 'page' : undefined}
                 >
                   {item.label}
@@ -101,7 +87,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className={`nav-menu-button ${isScrolled ? 'nav-menu-button--scrolled' : 'nav-menu-button--hero'}`}
+          className="nav-menu-button"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label={isOpen ? 'Close menu' : 'Open menu'}

@@ -42,7 +42,6 @@ export default function Hero() {
                 href={cta.href}
                 variant={resolveCtaVariant(cta.variant)}
                 download={cta.download}
-                className="w-full sm:w-auto sm:min-w-[11rem]"
                 aria-label={
                   cta.download ? `${cta.label}: ${cta.download}` : undefined
                 }
