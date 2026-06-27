@@ -20,9 +20,11 @@ interface SectionProps {
   children: ReactNode
   className?: string
   tone?: SectionTone
-  /** Path from siteImages in src/config/images.ts */
+  /** Optional photo path from siteImages — layered over CSS when set */
   backgroundImage?: string
   backgroundVariant?: SectionBackgroundVariant
+  /** Right-side gradient accent (About) — no stock photo needed */
+  designAccent?: boolean
 }
 
 const toneClasses: Record<SectionTone, string> = {
@@ -47,15 +49,19 @@ export default function Section({
   tone = 'white',
   backgroundImage,
   backgroundVariant,
+  designAccent = false,
 }: SectionProps) {
   const headingId = id ? `${id}-heading` : undefined
   const showTexture = texturedTones.includes(tone) && !backgroundImage
-  const showBridge = bridgedTones.includes(tone)
+  const showBridge = bridgedTones.includes(tone) || designAccent
   const revealRef = useRevealOnScroll<HTMLDivElement>()
 
-  const backgroundClass = backgroundImage
-    ? `section-bg-image section-bg-image--${backgroundVariant ?? 'accent'}`
-    : ''
+  const backgroundClass = [
+    backgroundImage ? `section-bg-image section-bg-image--${backgroundVariant ?? 'accent'}` : '',
+    designAccent ? 'section-designed-accent' : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
 
   const sectionStyle: CSSProperties | undefined = backgroundImage
     ? ({ '--section-bg-image': `url(${backgroundImage})` } as CSSProperties)
@@ -69,6 +75,13 @@ export default function Section({
       aria-labelledby={headingId}
     >
       {showBridge && <div className="section-bridge" aria-hidden="true" />}
+
+      {designAccent && (
+        <>
+          <div className="section-accent-glow" aria-hidden="true" />
+          <div className="section-accent-lines" aria-hidden="true" />
+        </>
+      )}
 
       {showTexture && (
         <div className="section-texture" aria-hidden="true" />

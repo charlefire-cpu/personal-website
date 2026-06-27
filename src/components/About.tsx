@@ -1,4 +1,3 @@
-import { siteImages } from '../config/images'
 import { profile } from '../data/profile'
 import Section from './ui/Section'
 
@@ -11,8 +10,7 @@ export default function About() {
       title={title}
       eyebrow="Overview"
       tone="white"
-      backgroundImage={siteImages.aboutAccent}
-      backgroundVariant="accent"
+      designAccent
     >
       <div className="card max-w-3xl">
         <div className="card-body space-y-5 sm:space-y-6">

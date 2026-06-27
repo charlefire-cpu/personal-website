@@ -1,15 +1,16 @@
 /**
- * Site image assets
+ * Optional photo backgrounds
  *
- * Drop replacement files in `public/assets/images/` using the filenames below.
- * Paths respect Vite `base` (e.g. GitHub Pages project sites).
+ * The site uses designed CSS backgrounds by default (hero grid, About accent, Contact gradient).
+ * To swap in your own photos, drop files in `public/assets/images/` and wire them up in
+ * Hero.tsx or Section via `backgroundImage` / inline styles.
  *
- * Recommended: JPG or WebP, ~1920px wide for backgrounds, compressed for web.
+ * Recommended if using photos: JPG or WebP, ~1920px wide, cool/desaturated tones, compressed.
  */
 
 const ASSETS_BASE = `${import.meta.env.BASE_URL}assets/images`
 
-/** Image filenames in public/assets/images/ */
+/** Optional image filenames in public/assets/images/ */
 export const imageFiles = {
   heroBg: 'hero-bg.jpg',
   aboutAccent: 'about-accent.jpg',
@@ -19,15 +20,12 @@ export const imageFiles = {
 export type SiteImageKey = keyof typeof imageFiles
 
 export const siteImages = {
-  /** Full-width hero background → replace public/assets/images/hero-bg.jpg */
   heroBg: `${ASSETS_BASE}/${imageFiles.heroBg}`,
-  /** Subtle About section accent → replace public/assets/images/about-accent.jpg */
   aboutAccent: `${ASSETS_BASE}/${imageFiles.aboutAccent}`,
-  /** Contact section background → replace public/assets/images/contact-bg.jpg */
   contactBg: `${ASSETS_BASE}/${imageFiles.contactBg}`,
 } as const
 
-/** Inline style for CSS background-image layers in components. */
+/** Inline style for CSS background-image layers. */
 export function toBackgroundImageUrl(imagePath: string): string {
   return `url(${imagePath})`
 }
