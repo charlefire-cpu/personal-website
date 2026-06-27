@@ -14,14 +14,14 @@ export default function Navbar() {
   }, [isOpen])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white/95 shadow-sm backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-border bg-white/95 shadow-sm backdrop-blur-sm transition-shadow duration-200 ease-out motion-reduce:transition-none">
       <nav
         className="page-container flex items-center justify-between gap-4 py-3 sm:py-4"
         aria-label="Main navigation"
       >
         <a
           href="#home"
-          className="shrink-0 text-base font-semibold tracking-tight text-primary transition-colors hover:text-accent sm:text-lg"
+          className="shrink-0 text-base font-semibold tracking-tight text-primary link-hover hover:text-accent sm:text-lg"
           onClick={closeMenu}
         >
           {profile.navBrand}
@@ -32,7 +32,7 @@ export default function Navbar() {
             <li key={item.href}>
               <a
                 href={item.href}
-                className="rounded-lg px-2.5 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-primary xl:px-3"
+                className="nav-link px-2.5 py-2 text-sm font-medium text-muted hover:bg-surface hover:text-primary xl:px-3"
               >
                 {item.label}
               </a>
@@ -42,7 +42,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex shrink-0 items-center justify-center rounded-lg p-2 text-primary transition-colors hover:bg-surface lg:hidden"
+          className="nav-link inline-flex shrink-0 items-center justify-center p-2 text-primary hover:bg-surface lg:hidden"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -71,7 +71,7 @@ export default function Navbar() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="block rounded-lg px-3 py-3.5 text-base font-medium text-muted transition-colors hover:bg-surface hover:text-primary"
+                  className="nav-link block px-3 py-3.5 text-base font-medium text-muted hover:bg-surface hover:text-primary"
                   onClick={closeMenu}
                 >
                   {item.label}

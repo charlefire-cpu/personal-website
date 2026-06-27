@@ -16,7 +16,20 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
   overflow-x: clip;
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -37,7 +50,13 @@ body {
   }
 
   .card {
-    @apply min-w-0 max-w-full rounded-xl border border-border bg-white p-5 shadow-sm sm:p-6;
+    @apply min-w-0 max-w-full rounded-xl border border-border bg-white p-5 shadow-sm transition-[border-color,box-shadow,transform] duration-200 ease-out motion-reduce:transition-none sm:p-6;
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .card:hover {
+      @apply -translate-y-0.5 border-accent/25 shadow-md;
+    }
   }
 
   .section-heading {
@@ -45,11 +64,29 @@ body {
   }
 
   .section-heading-accent {
-    @apply mt-3 block h-1 w-10 rounded-full bg-accent sm:w-12;
+    @apply mt-3 block h-1 w-10 rounded-full bg-accent transition-[width] duration-300 ease-out motion-reduce:transition-none sm:w-12;
+  }
+
+  section:hover .section-heading-accent {
+    @apply w-14 sm:w-16;
   }
 
   .skill-tag {
-    @apply rounded-lg bg-accent-soft px-3 py-1.5 text-xs font-medium text-accent;
+    @apply rounded-lg bg-accent-soft px-3 py-1.5 text-xs font-medium text-accent transition-[background-color,color] duration-200 ease-out motion-reduce:transition-none;
+  }
+
+  @media (hover: hover) {
+    .skill-tag:hover {
+      @apply bg-accent/15 text-accent-hover;
+    }
+  }
+
+  .link-hover {
+    @apply transition-colors duration-200 ease-out motion-reduce:transition-none;
+  }
+
+  .nav-link {
+    @apply rounded-lg transition-[color,background-color] duration-200 ease-out motion-reduce:transition-none;
   }
 
   .timeline-line {
@@ -57,7 +94,13 @@ body {
   }
 
   .timeline-dot {
-    @apply absolute top-6 left-3 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-accent bg-white ring-2 ring-white md:top-7 md:left-4 md:h-3.5 md:w-3.5 md:ring-4;
+    @apply absolute top-6 left-3 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-accent bg-white ring-2 ring-white transition-[border-color,box-shadow] duration-200 ease-out motion-reduce:transition-none md:top-7 md:left-4 md:h-3.5 md:w-3.5 md:ring-4;
+  }
+
+  @media (hover: hover) {
+    .timeline-item:hover .timeline-dot {
+      @apply border-accent-hover shadow-sm;
+    }
   }
 
   .timeline-item {

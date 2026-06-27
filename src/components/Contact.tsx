@@ -48,7 +48,7 @@ export default function Contact() {
                   href={item.href}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  className="mt-2 block break-all text-sm font-medium text-accent transition-colors hover:text-accent-hover"
+                  className="link-hover mt-2 block break-all text-sm font-medium text-accent hover:text-accent-hover"
                 >
                   {item.value}
                 </a>
