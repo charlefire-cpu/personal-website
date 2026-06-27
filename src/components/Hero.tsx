@@ -22,7 +22,6 @@ function TitleLine({ title }: { title: string }) {
 
 export default function Hero() {
   const { id, ctas } = profile.hero
-  const { filePath, fileName } = profile.resume
 
   return (
     <section
@@ -58,22 +57,20 @@ export default function Hero() {
               </p>
 
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-                {ctas.map((cta) => {
-                  const isDownload = Boolean(cta.download)
-
-                  return (
-                    <Button
-                      key={cta.label}
-                      href={isDownload ? filePath : cta.href}
-                      variant={cta.variant}
-                      download={isDownload ? fileName : undefined}
-                      className="w-full sm:w-auto"
-                      aria-label={isDownload ? `${cta.label}: ${fileName}` : undefined}
-                    >
-                      {cta.label}
-                    </Button>
-                  )
-                })}
+                {ctas.map((cta) => (
+                  <Button
+                    key={cta.label}
+                    href={cta.href}
+                    variant={cta.variant}
+                    download={cta.download}
+                    className="w-full sm:w-auto"
+                    aria-label={
+                      cta.download ? `${cta.label}: ${cta.download}` : undefined
+                    }
+                  >
+                    {cta.label}
+                  </Button>
+                ))}
               </div>
             </div>
           </div>

@@ -36,6 +36,9 @@ export interface ContactLabels {
   location: string
 }
 
+export const RESUME_PATH = '/resume/Charmaine-Buffe-Resume.pdf'
+export const RESUME_FILENAME = 'Charmaine-Buffe-Resume.pdf'
+
 export interface Profile {
   name: string
   navBrand: string
@@ -206,8 +209,8 @@ export const profile: Profile = {
   resume: {
     description:
       'Download a copy of my professional resume for a detailed overview of my experience, skills, and employment background.',
-    filePath: '/resume/Charmaine-Buffe-Resume.pdf',
-    fileName: 'Charmaine-Buffe-Resume.pdf',
+    filePath: RESUME_PATH,
+    fileName: RESUME_FILENAME,
     buttonLabel: 'Download Resume',
   },
   contact: {
@@ -229,9 +232,9 @@ export const profile: Profile = {
       { label: 'View Experience', href: '#experience', variant: 'outline' },
       {
         label: 'Download Resume',
-        href: '#',
+        href: RESUME_PATH,
         variant: 'primary',
-        download: 'Charmaine-Buffe-Resume.pdf',
+        download: RESUME_FILENAME,
       },
     ],
   },
