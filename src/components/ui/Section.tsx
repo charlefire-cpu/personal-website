@@ -28,6 +28,7 @@ const toneClasses: Record<SectionTone, string> = {
 }
 
 const texturedTones: SectionTone[] = ['tinted', 'experience', 'contact']
+const bridgedTones: SectionTone[] = ['tinted', 'gradient', 'experience', 'surface', 'contact']
 
 export default function Section({
   id,
@@ -40,6 +41,7 @@ export default function Section({
 }: SectionProps) {
   const headingId = id ? `${id}-heading` : undefined
   const showTexture = texturedTones.includes(tone)
+  const showBridge = bridgedTones.includes(tone)
 
   return (
     <section
@@ -47,6 +49,8 @@ export default function Section({
       className={`section-base ${toneClasses[tone]} ${className}`}
       aria-labelledby={headingId}
     >
+      {showBridge && <div className="section-bridge" aria-hidden="true" />}
+
       {showTexture && (
         <div className="section-texture" aria-hidden="true" />
       )}
