@@ -75,7 +75,10 @@ export interface Profile {
     about: SectionMeta
     coreCompetencies: SectionMeta
     technicalSkills: SectionMeta
-    experience: SectionMeta & { previousRolesTitle: string }
+    experience: SectionMeta & {
+      earlierExperienceTitle: string
+      earlierExperienceDescription: string
+    }
     education: SectionMeta
     resume: SectionMeta
     contact: SectionMeta
@@ -138,10 +141,9 @@ export const profile: Profile = {
       company: 'NCS PH formerly Yondu, Inc.',
       period: 'April 2022 – Present',
       highlights: [
-        'Facilitates Scrum ceremonies and coaches teams on Agile best practices.',
-        'Removes blockers, monitors project progress, and manages risks across multiple teams and clients.',
-        'Prepares and delivers reports and presentations for executives and external stakeholders.',
-        'Partners with leadership to support Agile adoption, productivity, and collaboration.',
+        'Facilitate Scrum ceremonies and coach teams on Agile best practices.',
+        'Remove blockers, manage risks, and support delivery across multiple teams and clients.',
+        'Prepare executive reports and partner with leadership on Agile adoption.',
       ],
     },
     {
@@ -150,24 +152,19 @@ export const profile: Profile = {
       project: 'Banking & Financial Services Project / MOCA Migration',
       period: '2024 – 2025',
       highlights: [
-        'Delivered a multi-client payment processing and migration project.',
-        'Coordinated IT, QA, Operations, and Relationship Managers.',
-        'Managed requirements, UAT, deployment, and post-go-live activities.',
-        'Developed contingency plans, technical briefs, training materials, and risk management updates.',
-        'Oversaw deployment, escalations, and adoption support.',
+        'Led a multi-client payment processing and migration project.',
+        'Coordinated IT, QA, Operations, and Relationship Managers through delivery.',
+        'Managed requirements, UAT, deployment, and post-go-live support.',
       ],
     },
     {
-      title: 'Software Engineer → Senior Software Engineer',
+      title: 'Software Engineer to Senior Software Engineer',
       company: 'NCS PH formerly Yondu, Inc.',
       period: 'June 2016 – April 2022',
       highlights: [
-        'Contributed to the development of e-commerce products using GoLang and PHP.',
-        'Designed and implemented backend programs for SMS processing and payroll systems using Java Spring Boot.',
-        'Built and maintained APIs for backend processes and third-party client integrations.',
-        'Implemented automated testing using Katalon and Selenium.',
-        'Supported enterprise and client projects, ensuring smooth delivery and technical accuracy.',
-        'Mentored junior developers and collaborated with cross-functional teams to improve code quality and system performance.',
+        'Built e-commerce and backend systems using Go, PHP, and Java Spring Boot.',
+        'Developed APIs and automated tests for enterprise and client projects.',
+        'Mentored junior developers and collaborated with cross-functional teams.',
       ],
     },
     {
@@ -245,7 +242,8 @@ export const profile: Profile = {
     experience: {
       id: 'experience',
       title: 'Professional Experience',
-      previousRolesTitle: 'Previous Roles',
+      earlierExperienceTitle: 'Earlier Experience',
+      earlierExperienceDescription: 'Software development roles prior to NCS PH',
     },
     education: { id: 'education', title: 'Education' },
     resume: { id: 'resume', title: 'Resume' },
