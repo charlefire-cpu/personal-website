@@ -2,12 +2,12 @@ import { profile } from '../data/profile'
 import Section from './ui/Section'
 
 export default function About() {
-  const paragraphs = profile.about.split('\n\n')
+  const { id, title } = profile.sections.about
 
   return (
-    <Section id="about" title="About">
+    <Section id={id} title={title}>
       <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted">
-        {paragraphs.map((paragraph) => (
+        {profile.about.map((paragraph) => (
           <p key={paragraph.slice(0, 40)}>{paragraph}</p>
         ))}
       </div>

@@ -3,6 +3,17 @@ export interface NavItem {
   href: string
 }
 
+export interface HeroCta {
+  label: string
+  href: string
+  variant: 'primary' | 'secondary' | 'outline'
+}
+
+export interface SectionMeta {
+  id?: string
+  title: string
+}
+
 export interface ExperienceRole {
   title: string
   company: string
@@ -17,11 +28,19 @@ export interface SkillGroup {
   skills: string[]
 }
 
+export interface ContactLabels {
+  email: string
+  linkedin: string
+  github: string
+  location: string
+}
+
 export interface Profile {
   name: string
+  navBrand: string
   title: string
-  tagline: string
-  about: string
+  summary: string
+  about: string[]
   competencies: string[]
   skillGroups: SkillGroup[]
   experience: ExperienceRole[]
@@ -34,6 +53,7 @@ export interface Profile {
     description: string
     filePath: string
     fileName: string
+    buttonLabel: string
   }
   contact: {
     message: string
@@ -41,17 +61,37 @@ export interface Profile {
     linkedin?: string
     github?: string
     location: string
+    labels: ContactLabels
+  }
+  hero: {
+    id: string
+    ctas: HeroCta[]
+  }
+  sections: {
+    about: SectionMeta
+    coreCompetencies: SectionMeta
+    technicalSkills: SectionMeta
+    experience: SectionMeta & { previousRolesTitle: string }
+    education: SectionMeta
+    resume: SectionMeta
+    contact: SectionMeta
   }
   navigation: NavItem[]
+  footer: {
+    rightsReserved: string
+  }
 }
 
 export const profile: Profile = {
   name: 'Charmaine Buffe',
+  navBrand: 'Charmaine',
   title: 'Scrum Master | Project Manager',
-  tagline:
-    'Agile-focused Scrum Master and Project Manager with 10+ years of IT experience in software engineering, Agile delivery, enterprise releases, and banking and financial systems projects.',
-  about:
-    'I am an Agile-focused Scrum Master and Project Manager with over 10 years of IT experience across software engineering, Agile delivery, and banking and financial systems projects. I lead cross-functional teams, facilitate Agile transformation, manage enterprise releases, support production deployments, and drive end-to-end project delivery.\n\nMy background as a former Software Engineer gives me a strong technical foundation, enabling me to communicate effectively with business stakeholders, development teams, QA, operations, and leadership.',
+  summary:
+    'Agile-focused Scrum Master and Project Manager with 10+ years of IT experience across software engineering, Agile delivery, enterprise releases, and banking/financial systems projects.',
+  about: [
+    'Charmaine Buffe is an Agile-focused Scrum Master and Project Manager with over 10 years of IT experience across software engineering, Agile delivery, and banking/financial systems projects. She has experience leading cross-functional teams, facilitating Agile transformation, managing enterprise releases, supporting production deployments, and driving end-to-end project delivery.',
+    'Her background as a former Software Engineer gives her a strong technical foundation, allowing her to bridge communication between business stakeholders, development teams, QA, operations, and leadership.',
+  ],
   competencies: [
     'Agile & Scrum Methodologies',
     'IT Project Management',
@@ -91,23 +131,23 @@ export const profile: Profile = {
   experience: [
     {
       title: 'Scrum Master',
-      company: 'NCS PH (formerly Yondu, Inc.)',
+      company: 'NCS PH formerly Yondu, Inc.',
       period: 'April 2022 – Present',
       highlights: [
-        'Facilitate Scrum ceremonies and coach teams on Agile best practices.',
-        'Remove blockers, monitor project progress, and manage risks across multiple teams and clients.',
-        'Prepare and deliver reports and presentations for executives and external stakeholders.',
-        'Partner with leadership to support Agile adoption, productivity, and collaboration.',
+        'Facilitates Scrum ceremonies and coaches teams on Agile best practices.',
+        'Removes blockers, monitors project progress, and manages risks across multiple teams and clients.',
+        'Prepares and delivers reports and presentations for executives and external stakeholders.',
+        'Partners with leadership to support Agile adoption, productivity, and collaboration.',
       ],
     },
     {
       title: 'Project Manager',
-      company: 'NCS PH (formerly Yondu, Inc.)',
+      company: 'NCS PH formerly Yondu, Inc.',
       project: 'Banking & Financial Services Project / MOCA Migration',
       period: '2024 – 2025',
       highlights: [
         'Delivered a multi-client payment processing and migration project.',
-        'Coordinated IT, QA, Operations, and Relationship Managers throughout the delivery lifecycle.',
+        'Coordinated IT, QA, Operations, and Relationship Managers.',
         'Managed requirements, UAT, deployment, and post-go-live activities.',
         'Developed contingency plans, technical briefs, training materials, and risk management updates.',
         'Oversaw deployment, escalations, and adoption support.',
@@ -115,14 +155,14 @@ export const profile: Profile = {
     },
     {
       title: 'Software Engineer → Senior Software Engineer',
-      company: 'NCS PH (formerly Yondu, Inc.)',
+      company: 'NCS PH formerly Yondu, Inc.',
       period: 'June 2016 – April 2022',
       highlights: [
-        'Contributed to e-commerce product development using Go and PHP.',
-        'Designed and implemented backend systems for SMS processing and payroll using Java Spring Boot.',
+        'Contributed to the development of e-commerce products using GoLang and PHP.',
+        'Designed and implemented backend programs for SMS processing and payroll systems using Java Spring Boot.',
         'Built and maintained APIs for backend processes and third-party client integrations.',
         'Implemented automated testing using Katalon and Selenium.',
-        'Supported enterprise and client projects to ensure smooth delivery and technical accuracy.',
+        'Supported enterprise and client projects, ensuring smooth delivery and technical accuracy.',
         'Mentored junior developers and collaborated with cross-functional teams to improve code quality and system performance.',
       ],
     },
@@ -164,16 +204,44 @@ export const profile: Profile = {
   },
   resume: {
     description:
-      'Download my professional resume for a detailed overview of my experience, skills, and career background.',
+      'Download a copy of my professional resume for a detailed overview of my experience, skills, and employment background.',
     filePath: '/resume/Charmaine-Buffe-Resume.pdf',
     fileName: 'Charmaine-Buffe-Resume.pdf',
+    buttonLabel: 'Download Resume',
   },
   contact: {
     message:
-      'Interested in working together or exploring professional opportunities? Feel free to reach out by email or connect with me on LinkedIn.',
+      'Interested in working together or discussing professional opportunities? Feel free to reach out through email or connect with me professionally.',
     email: 'charmbuffe@yahoo.com',
     linkedin: 'https://linkedin.com/in/charmbuffe',
     location: 'Cavite, Philippines',
+    labels: {
+      email: 'Email',
+      linkedin: 'LinkedIn',
+      github: 'GitHub',
+      location: 'Location',
+    },
+  },
+  hero: {
+    id: 'home',
+    ctas: [
+      { label: 'View Resume', href: '#resume', variant: 'primary' },
+      { label: 'View Experience', href: '#experience', variant: 'outline' },
+      { label: 'Contact Me', href: '#contact', variant: 'secondary' },
+    ],
+  },
+  sections: {
+    about: { id: 'about', title: 'About' },
+    coreCompetencies: { id: 'skills', title: 'Core Competencies' },
+    technicalSkills: { title: 'Technical Skills' },
+    experience: {
+      id: 'experience',
+      title: 'Professional Experience',
+      previousRolesTitle: 'Previous Roles',
+    },
+    education: { id: 'education', title: 'Education' },
+    resume: { id: 'resume', title: 'Resume' },
+    contact: { id: 'contact', title: 'Contact' },
   },
   navigation: [
     { label: 'Home', href: '#home' },
@@ -184,4 +252,7 @@ export const profile: Profile = {
     { label: 'Resume', href: '#resume' },
     { label: 'Contact', href: '#contact' },
   ],
+  footer: {
+    rightsReserved: 'All rights reserved.',
+  },
 }

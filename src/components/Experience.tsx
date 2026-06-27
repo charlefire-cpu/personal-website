@@ -2,11 +2,12 @@ import { profile } from '../data/profile'
 import Section from './ui/Section'
 
 export default function Experience() {
+  const { id, title, previousRolesTitle } = profile.sections.experience
   const detailedRoles = profile.experience.filter((role) => !role.compact)
   const previousRoles = profile.experience.filter((role) => role.compact)
 
   return (
-    <Section id="experience" title="Professional Experience">
+    <Section id={id} title={title}>
       <div className="space-y-8">
         {detailedRoles.map((role) => (
           <article
@@ -33,7 +34,7 @@ export default function Experience() {
         {previousRoles.length > 0 && (
           <div className="rounded-lg border border-border bg-surface p-6">
             <h3 className="mb-4 text-lg font-semibold text-primary">
-              Previous Roles
+              {previousRolesTitle}
             </h3>
             <ul className="space-y-3">
               {previousRoles.map((role) => (

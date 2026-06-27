@@ -3,10 +3,11 @@ import Button from './ui/Button'
 import Section from './ui/Section'
 
 export default function Resume() {
-  const { description, filePath, fileName } = profile.resume
+  const { id, title } = profile.sections.resume
+  const { description, filePath, fileName, buttonLabel } = profile.resume
 
   return (
-    <Section id="resume" title="Resume">
+    <Section id={id} title={title}>
       <div className="max-w-2xl">
         <p className="text-base leading-relaxed text-muted">{description}</p>
         <div className="mt-6">
@@ -14,9 +15,9 @@ export default function Resume() {
             href={filePath}
             download={fileName}
             variant="primary"
-            aria-label={`Download resume: ${fileName}`}
+            aria-label={`${buttonLabel}: ${fileName}`}
           >
-            Download Resume
+            {buttonLabel}
           </Button>
         </div>
       </div>

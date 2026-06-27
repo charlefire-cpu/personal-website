@@ -17,7 +17,7 @@ export default function Navbar() {
           className="text-lg font-semibold text-primary transition-colors hover:text-accent"
           onClick={closeMenu}
         >
-          {profile.name.split(' ')[0]}
+          {profile.navBrand}
         </a>
 
         {/* Desktop navigation */}

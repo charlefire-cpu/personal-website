@@ -2,8 +2,10 @@ import { profile } from '../data/profile'
 import Section from './ui/Section'
 
 export default function TechnicalSkills() {
+  const { title } = profile.sections.technicalSkills
+
   return (
-    <Section title="Technical Skills" alternate>
+    <Section title={title} alternate>
       <div className="grid gap-6 sm:grid-cols-2">
         {profile.skillGroups.map((group) => (
           <div

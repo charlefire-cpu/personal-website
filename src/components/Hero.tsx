@@ -2,9 +2,11 @@ import { profile } from '../data/profile'
 import Button from './ui/Button'
 
 export default function Hero() {
+  const { id, ctas } = profile.hero
+
   return (
     <section
-      id="home"
+      id={id}
       className="scroll-mt-20 bg-gradient-to-b from-surface to-white py-20 md:py-28"
       aria-labelledby="hero-heading"
     >
@@ -19,18 +21,14 @@ export default function Hero() {
           {profile.title}
         </p>
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-          {profile.tagline}
+          {profile.summary}
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-          <Button href="#resume" variant="primary">
-            View Resume
-          </Button>
-          <Button href="#experience" variant="outline">
-            View Experience
-          </Button>
-          <Button href="#contact" variant="secondary">
-            Contact Me
-          </Button>
+          {ctas.map((cta) => (
+            <Button key={cta.href} href={cta.href} variant={cta.variant}>
+              {cta.label}
+            </Button>
+          ))}
         </div>
       </div>
     </section>

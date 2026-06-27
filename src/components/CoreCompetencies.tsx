@@ -2,8 +2,10 @@ import { profile } from '../data/profile'
 import Section from './ui/Section'
 
 export default function CoreCompetencies() {
+  const { id, title } = profile.sections.coreCompetencies
+
   return (
-    <Section id="skills" title="Core Competencies">
+    <Section id={id} title={title}>
       <ul className="grid gap-3 sm:grid-cols-2">
         {profile.competencies.map((competency) => (
           <li
