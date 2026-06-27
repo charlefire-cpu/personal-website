@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
 
 export type SectionTone =
   | 'white'
@@ -42,6 +43,7 @@ export default function Section({
   const headingId = id ? `${id}-heading` : undefined
   const showTexture = texturedTones.includes(tone)
   const showBridge = bridgedTones.includes(tone)
+  const revealRef = useRevealOnScroll<HTMLDivElement>()
 
   return (
     <section
@@ -55,7 +57,7 @@ export default function Section({
         <div className="section-texture" aria-hidden="true" />
       )}
 
-      <div className="page-container relative z-[1]">
+      <div ref={revealRef} className="reveal page-container relative z-[1]">
         <header className="mb-10 sm:mb-12 lg:mb-14">
           {eyebrow && <p className="section-eyebrow">{eyebrow}</p>}
           <h2 id={headingId} className="section-heading">

@@ -47,6 +47,21 @@ html {
   html {
     scroll-behavior: auto;
   }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .reveal-stagger > *,
+  .hero-enter > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 body {
@@ -61,7 +76,71 @@ body {
   @apply outline-2 outline-offset-2 outline-accent;
 }
 
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @layer components {
+  /* ── Scroll reveal ── */
+  .reveal {
+    @apply motion-reduce:opacity-100 motion-reduce:transform-none;
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+      opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-stagger > * {
+    @apply motion-reduce:opacity-100 motion-reduce:transform-none;
+    opacity: 0;
+    transform: translateY(0.625rem);
+    transition:
+      opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible .reveal-stagger > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-stagger > *:nth-child(1) {
+    transition-delay: 0.06s;
+  }
+
+  .reveal-stagger > *:nth-child(2) {
+    transition-delay: 0.12s;
+  }
+
+  .reveal-stagger > *:nth-child(3) {
+    transition-delay: 0.18s;
+  }
+
+  .reveal-stagger > *:nth-child(4) {
+    transition-delay: 0.24s;
+  }
+
+  .reveal-stagger > *:nth-child(5) {
+    transition-delay: 0.3s;
+  }
+
+  .reveal-stagger > *:nth-child(n + 6) {
+    transition-delay: 0.36s;
+  }
   /* ── Layout ── */
   .page-container {
     @apply mx-auto w-full max-w-5xl min-w-0 px-5 sm:px-6 lg:px-8;
@@ -184,12 +263,12 @@ body {
   }
 
   .card-interactive {
-    @apply transition-[border-color,box-shadow] duration-200 ease-out motion-reduce:transition-none;
+    @apply transition-[border-color,box-shadow,transform] duration-250 ease-out motion-reduce:transition-none;
   }
 
-  @media (hover: hover) {
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .card-interactive:hover {
-      @apply border-accent/20 shadow-[var(--shadow-card-hover)];
+      @apply border-accent/20 shadow-[var(--shadow-card-hover)] motion-safe:-translate-y-0.5;
     }
   }
 
@@ -349,10 +428,10 @@ body {
   .navbar {
     @apply sticky top-0 z-50 motion-reduce:transition-none;
     transition:
-      background-color 0.3s ease,
-      border-color 0.3s ease,
-      box-shadow 0.3s ease,
-      backdrop-filter 0.3s ease;
+      background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      backdrop-filter 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .navbar--hero {
@@ -364,7 +443,7 @@ body {
   }
 
   .navbar-brand {
-    @apply shrink-0 text-base font-semibold tracking-tight transition-colors duration-200 ease-out sm:text-[1.05rem];
+    @apply shrink-0 text-base font-semibold tracking-tight transition-[color,opacity] duration-300 ease-out sm:text-[1.05rem];
   }
 
   .navbar-brand--hero {
@@ -376,7 +455,7 @@ body {
   }
 
   .nav-link-item {
-    @apply relative rounded-lg px-3 py-2 text-sm font-medium transition-[color,background-color] duration-200 ease-out;
+    @apply relative rounded-lg px-3 py-2 text-sm font-medium transition-[color,background-color,opacity] duration-250 ease-out;
   }
 
   .nav-link-item--hero {
@@ -469,7 +548,7 @@ body {
   }
 
   .site-footer-link {
-    @apply text-sm text-white/55 transition-colors duration-200 ease-out hover:text-white;
+    @apply text-sm text-white/55 transition-[color,opacity] duration-250 ease-out hover:text-white motion-reduce:transition-none;
   }
 
   /* ── Experience timeline ── */
@@ -516,12 +595,12 @@ body {
   }
 
   .experience-card--interactive {
-    @apply transition-[border-color,box-shadow] duration-200 ease-out motion-reduce:transition-none;
+    @apply transition-[border-color,box-shadow,transform] duration-250 ease-out motion-reduce:transition-none;
   }
 
-  @media (hover: hover) {
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .experience-card--interactive:hover {
-      @apply border-accent/20 shadow-[var(--shadow-card-hover)];
+      @apply border-accent/20 shadow-[var(--shadow-card-hover)] motion-safe:-translate-y-0.5;
     }
   }
 
@@ -649,6 +728,27 @@ body {
 
   .hero-inner {
     @apply mx-auto max-w-3xl text-center;
+  }
+
+  .hero-enter > * {
+    opacity: 0;
+    animation: fade-slide-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .hero-enter > *:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+
+  .hero-enter > *:nth-child(2) {
+    animation-delay: 0.12s;
+  }
+
+  .hero-enter > *:nth-child(3) {
+    animation-delay: 0.19s;
+  }
+
+  .hero-enter > *:nth-child(4) {
+    animation-delay: 0.26s;
   }
 
   .hero-name {

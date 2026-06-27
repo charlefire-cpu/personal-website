@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="hero-overlay" aria-hidden="true" />
 
       <div className="page-container hero-content">
-        <div className="hero-inner">
+        <div className="hero-inner hero-enter">
           <h1 id="hero-heading" className="hero-name">
             {profile.name}
           </h1>

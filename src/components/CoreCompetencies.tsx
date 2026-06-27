@@ -6,7 +6,7 @@ export default function CoreCompetencies() {
 
   return (
     <Section id={id} title={title} eyebrow="Strengths" tone="tinted">
-      <ul className="card-grid-2">
+      <ul className="card-grid-2 reveal-stagger">
         {profile.competencies.map((competency) => (
           <li key={competency} className="card card-interactive card-row">
             <span className="card-marker" aria-hidden="true" />

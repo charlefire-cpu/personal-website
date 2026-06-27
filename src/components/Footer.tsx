@@ -1,14 +1,16 @@
 import { profile } from '../data/profile'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 
 export default function Footer() {
   const year = new Date().getFullYear()
   const footerLinks = profile.navigation.filter((item) => item.href !== '#home')
+  const revealRef = useRevealOnScroll<HTMLDivElement>()
 
   return (
     <footer className="site-footer">
       <div className="site-footer-bridge" aria-hidden="true" />
 
-      <div className="page-container site-footer-inner">
+      <div ref={revealRef} className="reveal page-container site-footer-inner">
         <div className="flex flex-col items-center gap-8 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
           <div className="min-w-0">
             <p className="text-base font-semibold text-white">{profile.name}</p>

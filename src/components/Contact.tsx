@@ -47,7 +47,7 @@ export default function Contact() {
 
   return (
     <Section id={id} title={title} eyebrow="Get in touch" tone="contact" description={message}>
-      <ul className="card-grid-2">
+      <ul className="card-grid-2 reveal-stagger">
         {contactItems.map((item) => {
           const Icon = iconMap[item.label] ?? EnvelopeIcon
 

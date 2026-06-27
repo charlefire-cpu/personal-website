@@ -20,7 +20,7 @@ export default function TechnicalSkills() {
 
   return (
     <Section title={title} eyebrow="Toolkit" tone="gradient">
-      <div className="card-grid-2">
+      <div className="card-grid-2 reveal-stagger">
         {profile.skillGroups.map((group) => {
           const Icon = categoryIcons[group.category] ?? CodeBracketIcon
 
