@@ -7,6 +7,7 @@ export interface HeroCta {
   label: string
   href: string
   variant: 'primary' | 'secondary' | 'outline'
+  download?: string
 }
 
 export interface SectionMeta {
@@ -225,9 +226,13 @@ export const profile: Profile = {
   hero: {
     id: 'home',
     ctas: [
-      { label: 'View Resume', href: '#resume', variant: 'primary' },
       { label: 'View Experience', href: '#experience', variant: 'outline' },
-      { label: 'Contact Me', href: '#contact', variant: 'secondary' },
+      {
+        label: 'Download Resume',
+        href: '#',
+        variant: 'primary',
+        download: 'Charmaine-Buffe-Resume.pdf',
+      },
     ],
   },
   sections: {
