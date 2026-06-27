@@ -33,11 +33,13 @@ export default function Contact() {
 
   return (
     <Section id={id} title={title}>
-      <div className="max-w-2xl">
-        <p className="mb-8 text-base leading-relaxed text-muted">{message}</p>
-        <ul className="grid gap-4 sm:grid-cols-2">
+      <div className="min-w-0 max-w-2xl">
+        <p className="mb-6 text-base leading-relaxed text-muted sm:mb-8">
+          {message}
+        </p>
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           {contactItems.map((item) => (
-            <li key={item.label} className="card p-5">
+            <li key={item.label} className="card min-w-0 !p-4 sm:!p-5">
               <span className="block text-xs font-semibold uppercase tracking-wide text-muted">
                 {item.label}
               </span>
@@ -46,12 +48,12 @@ export default function Contact() {
                   href={item.href}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  className="mt-2 block text-sm font-medium text-accent transition-colors hover:text-accent-hover"
+                  className="mt-2 block break-all text-sm font-medium text-accent transition-colors hover:text-accent-hover"
                 >
                   {item.value}
                 </a>
               ) : (
-                <span className="mt-2 block text-sm font-medium text-primary">
+                <span className="mt-2 block break-words text-sm font-medium text-primary">
                   {item.value}
                 </span>
               )}

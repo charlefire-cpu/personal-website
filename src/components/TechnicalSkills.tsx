@@ -6,10 +6,10 @@ export default function TechnicalSkills() {
 
   return (
     <Section title={title}>
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
         {profile.skillGroups.map((group) => (
-          <div key={group.category} className="card">
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-primary">
+          <div key={group.category} className="card min-w-0">
+            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-primary sm:mb-4 sm:text-sm">
               {group.category}
             </h3>
             <ul className="flex flex-wrap gap-2">

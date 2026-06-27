@@ -20,13 +20,13 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`scroll-mt-24 py-16 sm:py-20 md:py-24 ${
+      className={`scroll-mt-[4.5rem] py-12 sm:scroll-mt-24 sm:py-16 md:py-20 lg:py-24 ${
         alternate ? 'bg-surface' : 'bg-white'
       } ${className}`}
       aria-labelledby={headingId}
     >
-      <div className="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
-        <header className="mb-10 md:mb-12">
+      <div className="page-container">
+        <header className="mb-8 sm:mb-10 md:mb-12">
           <h2 id={headingId} className="section-heading">
             {title}
           </h2>

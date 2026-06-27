@@ -11,9 +11,9 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <>
+    <div className="min-w-0 overflow-x-clip">
       <Navbar />
-      <main>
+      <main className="min-w-0">
         <Hero />
         <About />
         <CoreCompetencies />
@@ -24,6 +24,6 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

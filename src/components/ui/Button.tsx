@@ -31,7 +31,7 @@ export default function Button({
   className = '',
   ...props
 }: ButtonProps) {
-  const styles = `inline-flex items-center justify-center rounded-lg px-6 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${variantStyles[variant]} ${className}`
+  const styles = `inline-flex min-w-0 items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 sm:px-6 ${variantStyles[variant]} ${className}`
 
   if ('href' in props && props.href) {
     const { href, ...linkProps } = props
