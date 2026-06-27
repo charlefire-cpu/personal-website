@@ -213,6 +213,20 @@ body {
     @apply mb-5 border-b border-border/70 pb-4;
   }
 
+  .card-header-icon {
+    @apply mb-5 flex items-center gap-3.5 border-b border-border/70 pb-4;
+  }
+
+  .icon-circle-sm {
+    @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border/80 bg-surface text-accent shadow-[var(--shadow-xs)] transition-[border-color,background-color,box-shadow] duration-200 ease-out motion-reduce:transition-none;
+  }
+
+  @media (hover: hover) {
+    .card-interactive:hover .icon-circle-sm {
+      @apply border-accent/20 bg-accent-soft shadow-[var(--shadow-sm)];
+    }
+  }
+
   .card-title {
     @apply text-xs font-semibold tracking-wide text-primary uppercase;
   }
@@ -281,7 +295,27 @@ body {
 
   /* ── Buttons (mirrors Button.tsx tokens) ── */
   .btn-base {
-    @apply inline-flex min-w-0 items-center justify-center gap-2 rounded-xl px-6 py-2.5 text-sm font-medium transition-[color,background-color,border-color,box-shadow] duration-200 ease-out motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    @apply inline-flex min-w-0 items-center justify-center gap-2 rounded-xl px-6 py-2.5 text-sm font-medium transition-[color,background-color,border-color,box-shadow,transform] duration-200 ease-out motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .btn-base:hover {
+      @apply motion-safe:-translate-y-px;
+    }
+  }
+
+  .btn-icon {
+    @apply shrink-0 opacity-90 transition-transform duration-200 ease-out motion-reduce:transition-none;
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .btn-base:hover .btn-icon {
+      @apply motion-safe:translate-x-0.5;
+    }
+
+    .btn-base:hover .btn-icon--down {
+      @apply motion-safe:translate-x-0 motion-safe:translate-y-0.5;
+    }
   }
 
   /* ── Tags & links ── */

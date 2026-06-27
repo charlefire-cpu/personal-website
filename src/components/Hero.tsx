@@ -1,5 +1,6 @@
 import { profile } from '../data/profile'
 import Button from './ui/Button'
+import { ArrowDownTrayIcon, ArrowRightIcon } from './ui/icons'
 
 function resolveCtaVariant(variant: 'primary' | 'secondary' | 'outline') {
   return variant === 'outline' ? 'outline-light' : variant
@@ -44,6 +45,11 @@ export default function Hero() {
                   cta.download ? `${cta.label}: ${cta.download}` : undefined
                 }
               >
+                {cta.download ? (
+                  <ArrowDownTrayIcon className="btn-icon btn-icon--down" />
+                ) : (
+                  <ArrowRightIcon className="btn-icon" />
+                )}
                 {cta.label}
               </Button>
             ))}

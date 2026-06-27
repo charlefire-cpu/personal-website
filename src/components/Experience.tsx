@@ -155,7 +155,7 @@ export default function Experience() {
   const earlierRoles = profile.experience.filter((role) => role.compact)
 
   return (
-    <Section id={id} title={title} tone="experience">
+    <Section id={id} title={title} eyebrow="Career" tone="experience">
       <div className="experience-timeline">
         <div className="experience-track" aria-hidden="true" />
 

@@ -1,4 +1,5 @@
 import { profile } from '../data/profile'
+import { GraduationCapIcon } from './ui/icons'
 import Section from './ui/Section'
 
 export default function Education() {
@@ -6,11 +7,18 @@ export default function Education() {
   const { degree, school, year } = profile.education
 
   return (
-    <Section id={id} title={title} tone="white">
+    <Section id={id} title={title} eyebrow="Background" tone="white">
       <div className="card max-w-xl">
-        <h3 className="text-h3">{degree}</h3>
-        <p className="card-body mt-3 break-words">{school}</p>
-        <p className="text-accent-label mt-4">{year}</p>
+        <div className="card-header-icon">
+          <span className="icon-circle-sm">
+            <GraduationCapIcon />
+          </span>
+          <div className="min-w-0">
+            <h3 className="text-h3">{degree}</h3>
+            <p className="card-body mt-2 break-words">{school}</p>
+          </div>
+        </div>
+        <p className="text-accent-label">{year}</p>
       </div>
     </Section>
   )

@@ -18,13 +18,13 @@ type ButtonProps = ButtonAsButton | ButtonAsLink
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-accent text-white shadow-[var(--shadow-xs)] hover:bg-accent-hover hover:shadow-[var(--shadow-sm)] focus-visible:ring-accent',
+    'bg-accent text-white shadow-[var(--shadow-sm)] hover:border-accent-hover hover:bg-accent-hover hover:shadow-[var(--shadow-md)] focus-visible:ring-accent',
   secondary:
-    'bg-primary text-white shadow-[var(--shadow-xs)] hover:bg-primary-dark hover:shadow-[var(--shadow-sm)] focus-visible:ring-primary',
+    'bg-primary text-white shadow-[var(--shadow-sm)] hover:bg-primary-dark hover:shadow-[var(--shadow-md)] focus-visible:ring-primary',
   outline:
-    'border border-border bg-white text-primary shadow-[var(--shadow-xs)] hover:border-accent/40 hover:text-accent focus-visible:ring-accent',
+    'border border-border/90 bg-white text-primary shadow-[var(--shadow-xs)] hover:border-accent/35 hover:bg-accent-soft/50 hover:text-accent hover:shadow-[var(--shadow-sm)] focus-visible:ring-accent',
   'outline-light':
-    'border border-white/35 bg-white/10 text-white backdrop-blur-sm hover:border-white/55 hover:bg-white/15 focus-visible:ring-white focus-visible:ring-offset-primary-dark',
+    'border border-white/40 bg-white/10 text-white shadow-[var(--shadow-xs)] backdrop-blur-sm hover:border-white/60 hover:bg-white/20 hover:shadow-[var(--shadow-sm)] focus-visible:ring-white focus-visible:ring-offset-primary-dark',
 }
 
 const baseStyles =
