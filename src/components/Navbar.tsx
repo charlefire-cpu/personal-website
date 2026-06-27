@@ -3,9 +3,17 @@ import { profile } from '../data/profile'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const [activeHref, setActiveHref] = useState('#home')
 
   const closeMenu = () => setIsOpen(false)
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : ''
@@ -54,7 +62,7 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header className="navbar">
+    <header className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
       <nav
         className="page-container flex h-14 items-center justify-between gap-4 sm:h-[3.75rem]"
         aria-label="Main navigation"

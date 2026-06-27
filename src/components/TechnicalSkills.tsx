@@ -30,7 +30,7 @@ export default function TechnicalSkills() {
                 <span className="icon-circle-sm">
                   <Icon />
                 </span>
-                <h3 className="card-title !normal-case">{group.category}</h3>
+                <h3 className="card-heading">{group.category}</h3>
               </header>
               <ul className="skill-tags">
                 {group.skills.map((skill) => (

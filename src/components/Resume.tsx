@@ -10,7 +10,7 @@ export default function Resume() {
   return (
     <Section id={id} title={title} eyebrow="Download" tone="surface">
       <div className="card card-featured max-w-2xl">
-        <div className="card-header-icon !mb-0 !border-b-0 !pb-0">
+        <div className="card-header-plain">
           <span className="icon-circle-sm">
             <DocumentTextIcon />
           </span>

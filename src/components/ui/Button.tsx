@@ -22,9 +22,9 @@ const variantStyles: Record<ButtonVariant, string> = {
   secondary:
     'border border-transparent bg-primary text-white shadow-none hover:bg-primary-dark hover:shadow-[var(--shadow-xs)] focus-visible:ring-primary',
   outline:
-    'border border-border bg-white text-primary shadow-none hover:border-accent/35 hover:bg-accent-soft/40 hover:text-accent focus-visible:ring-accent',
+    'border border-border/80 bg-white text-primary shadow-none hover:border-accent/30 hover:bg-accent-soft/50 hover:text-accent focus-visible:ring-accent',
   'outline-light':
-    'border border-white/35 bg-white/10 text-white shadow-none backdrop-blur-sm hover:border-white/50 hover:bg-white/15 focus-visible:ring-white focus-visible:ring-offset-primary-dark',
+    'border border-white/40 bg-white/12 text-white shadow-none backdrop-blur-sm hover:border-white/55 hover:bg-white/20 focus-visible:ring-white focus-visible:ring-offset-primary-dark',
 }
 
 const baseStyles =

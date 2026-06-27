@@ -8,7 +8,7 @@ export default function Education() {
 
   return (
     <Section id={id} title={title} eyebrow="Background" tone="white">
-      <div className="card max-w-xl">
+      <div className="card card-interactive max-w-xl">
         <div className="card-header-icon">
           <span className="icon-circle-sm">
             <GraduationCapIcon />

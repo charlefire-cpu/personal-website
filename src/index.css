@@ -15,18 +15,20 @@
   --color-muted-light: #94a3b8;
   --color-border: #e2e8f0;
 
-  --radius-sm: 0.375rem;
+  --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
-  --radius-lg: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
 
   --shadow-xs: 0 1px 2px rgb(15 23 42 / 0.04);
   --shadow-sm: 0 1px 3px rgb(15 23 42 / 0.05), 0 1px 2px rgb(15 23 42 / 0.03);
   --shadow-md: 0 4px 14px rgb(15 23 42 / 0.06), 0 2px 6px rgb(15 23 42 / 0.04);
   --shadow-lg: 0 10px 28px rgb(15 23 42 / 0.08), 0 4px 10px rgb(15 23 42 / 0.04);
   --shadow-card-hover: 0 8px 22px rgb(15 23 42 / 0.08), 0 2px 8px rgb(15 23 42 / 0.04);
+  --shadow-navbar: 0 1px 3px rgb(15 23 42 / 0.06), 0 1px 2px rgb(15 23 42 / 0.04);
 
   --spacing-section-y: 5rem;
-  --spacing-section-y-lg: 6rem;
+  --spacing-section-y-lg: 6.5rem;
 
   --nav-height: 3.5rem;
 }
@@ -66,6 +68,11 @@ html {
 
 body {
   @apply min-w-0 bg-white font-sans text-base leading-relaxed text-primary antialiased;
+}
+
+::selection {
+  background-color: rgb(13 148 136 / 0.18);
+  color: var(--color-primary-dark);
 }
 
 #root {
@@ -156,19 +163,19 @@ body {
   }
 
   .section-eyebrow {
-    @apply mb-3 text-xs font-medium uppercase tracking-[0.15em] text-accent;
+    @apply mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-accent;
   }
 
   .section-heading {
-    @apply text-2xl font-semibold tracking-tight text-primary sm:text-3xl;
+    @apply text-2xl font-semibold tracking-tight text-primary sm:text-[1.75rem] lg:text-3xl;
   }
 
   .section-heading-accent {
-    @apply mt-4 block h-0.5 w-10 rounded-full bg-accent;
+    @apply mt-4 block h-0.5 w-10 rounded-full bg-accent sm:w-12;
   }
 
   .section-subheading {
-    @apply mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg;
+    @apply mt-4 max-w-2xl text-base leading-[1.7] text-muted sm:mt-5 sm:text-lg;
   }
 
   .text-h3 {
@@ -193,7 +200,7 @@ body {
 
   /* ── Sections ── */
   .section-base {
-    @apply relative isolate scroll-mt-[var(--nav-height)] py-20 sm:py-24 lg:py-28;
+    @apply relative isolate scroll-mt-[var(--nav-height)] py-[var(--spacing-section-y)] sm:py-24 lg:py-[var(--spacing-section-y-lg)];
   }
 
   .section-bridge {
@@ -249,28 +256,59 @@ body {
 
   .section-bg-image--accent {
     background-image:
-      linear-gradient(105deg, rgb(255 255 255 / 0.97) 0%, rgb(255 255 255 / 0.9) 55%, rgb(255 255 255 / 0.82) 100%),
+      linear-gradient(
+        115deg,
+        rgb(255 255 255 / 0.985) 0%,
+        rgb(255 255 255 / 0.96) 48%,
+        rgb(255 255 255 / 0.88) 72%,
+        rgb(255 255 255 / 0.78) 100%
+      ),
       var(--section-bg-image);
     background-position: center, center right;
   }
 
   @media (min-width: 768px) {
     .section-bg-image--accent {
-      background-size: cover, 42% auto;
+      background-image:
+        linear-gradient(
+          105deg,
+          rgb(255 255 255 / 0.98) 0%,
+          rgb(255 255 255 / 0.94) 52%,
+          rgb(255 255 255 / 0.86) 100%
+        ),
+        var(--section-bg-image);
+      background-size: cover, 40% auto;
       background-position: center, right center;
     }
+  }
+
+  .section-bg-image .card {
+    @apply border-white/95 shadow-[var(--shadow-md)];
   }
 
   .section-tone-contact.section-bg-image--contact {
     background-image:
       linear-gradient(
         165deg,
-        rgb(248 250 252 / 0.94) 0%,
-        rgb(255 255 255 / 0.96) 45%,
-        rgb(240 253 250 / 0.92) 100%
+        rgb(248 250 252 / 0.97) 0%,
+        rgb(255 255 255 / 0.98) 42%,
+        rgb(240 253 250 / 0.95) 100%
       ),
       var(--section-bg-image);
     background-position: center, center top;
+  }
+
+  @media (max-width: 767px) {
+    .section-tone-contact.section-bg-image--contact {
+      background-image:
+        linear-gradient(
+          180deg,
+          rgb(248 250 252 / 0.98) 0%,
+          rgb(255 255 255 / 0.97) 55%,
+          rgb(240 253 250 / 0.96) 100%
+        ),
+        var(--section-bg-image);
+    }
   }
 
   .section-tone-experience .experience-track {
@@ -292,7 +330,7 @@ body {
 
   /* ── Cards ── */
   .card {
-    @apply min-w-0 max-w-full rounded-2xl border border-border/80 bg-white p-6 shadow-[var(--shadow-sm)] sm:p-7;
+    @apply min-w-0 max-w-full rounded-[var(--radius-xl)] border border-border/70 bg-white p-6 shadow-[var(--shadow-sm)] sm:p-7;
   }
 
   .card-interactive {
@@ -322,11 +360,15 @@ body {
   }
 
   .card-header {
-    @apply mb-5 border-b border-border/70 pb-4;
+    @apply mb-5 border-b border-border/60 pb-4;
   }
 
   .card-header-icon {
-    @apply mb-5 flex items-center gap-3.5 border-b border-border/70 pb-4;
+    @apply mb-5 flex items-center gap-3.5 border-b border-border/60 pb-4;
+  }
+
+  .card-header-plain {
+    @apply mb-0 flex items-center gap-3.5 border-b-0 pb-0;
   }
 
   .icon-circle-sm {
@@ -343,8 +385,12 @@ body {
     @apply text-xs font-semibold tracking-wide text-primary uppercase;
   }
 
+  .card-heading {
+    @apply text-base font-semibold leading-snug tracking-tight text-primary sm:text-[1.0625rem];
+  }
+
   .card-body {
-    @apply text-base leading-relaxed text-muted;
+    @apply text-base leading-[1.7] text-muted;
   }
 
   .card-footer {
@@ -360,7 +406,7 @@ body {
   }
 
   .card-row-text {
-    @apply min-w-0 flex-1 text-sm leading-relaxed text-primary sm:text-[0.9375rem];
+    @apply min-w-0 flex-1 text-sm leading-[1.65] text-primary sm:text-[0.9375rem];
   }
 
   .card-contact {
@@ -380,7 +426,7 @@ body {
   }
 
   .card-contact-link {
-    @apply mt-2 block break-all text-sm font-medium text-accent transition-colors duration-200 ease-out hover:text-accent-hover motion-reduce:transition-none sm:text-base;
+    @apply mt-2 block break-words text-sm font-medium text-accent transition-colors duration-200 ease-out hover:text-accent-hover motion-reduce:transition-none sm:text-base;
   }
 
   .card-list {
@@ -407,7 +453,7 @@ body {
 
   /* ── Buttons (mirrors Button.tsx tokens) ── */
   .btn-base {
-    @apply inline-flex h-11 min-h-11 max-h-[3.25rem] min-w-0 items-center justify-center gap-1.5 rounded-lg px-4 text-sm font-medium leading-none transition-[color,background-color,border-color,box-shadow,transform] duration-200 ease-out motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 sm:px-5;
+    @apply inline-flex h-11 min-h-11 max-h-[3.25rem] min-w-0 items-center justify-center gap-2 rounded-[var(--radius-md)] px-5 text-sm font-medium leading-none transition-[color,background-color,border-color,box-shadow,transform] duration-200 ease-out motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 sm:px-6;
   }
 
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -436,7 +482,7 @@ body {
   }
 
   .skill-tag {
-    @apply rounded-lg border border-border/80 bg-surface px-3.5 py-2 text-xs font-medium text-primary transition-[border-color,background-color,color,box-shadow] duration-200 ease-out motion-reduce:transition-none;
+    @apply rounded-[var(--radius-sm)] border border-border/70 bg-surface px-3 py-1.5 text-xs font-medium text-primary transition-[border-color,background-color,color,box-shadow] duration-200 ease-out motion-reduce:transition-none sm:px-3.5 sm:py-2;
   }
 
   @media (hover: hover) {
@@ -459,10 +505,15 @@ body {
 
   /* ── Navbar ── */
   .navbar {
-    @apply sticky top-0 z-50 border-b border-border/80 bg-white/95 shadow-[var(--shadow-xs)] backdrop-blur-md motion-reduce:transition-none;
+    @apply sticky top-0 z-50 border-b border-border/60 bg-white/90 shadow-[var(--shadow-xs)] backdrop-blur-lg motion-reduce:transition-none;
     transition:
       box-shadow 0.3s ease,
-      border-color 0.3s ease;
+      border-color 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  .navbar--scrolled {
+    @apply border-border/80 bg-white/95 shadow-[var(--shadow-navbar)];
   }
 
   .navbar-brand {
@@ -509,7 +560,7 @@ body {
   }
 
   .mobile-nav-link {
-    @apply block rounded-lg px-4 py-3 text-base font-medium text-primary/80 transition-colors duration-200 ease-out hover:bg-surface hover:text-primary;
+    @apply block rounded-lg px-4 py-3.5 text-[0.9375rem] font-medium text-primary/85 transition-colors duration-200 ease-out hover:bg-surface hover:text-primary;
   }
 
   .mobile-nav-link--active {
@@ -531,15 +582,15 @@ body {
   }
 
   .site-footer-inner {
-    @apply py-10 sm:py-12;
+    @apply py-11 sm:py-14;
   }
 
   .site-footer-divider {
-    @apply my-8 h-px w-full bg-white/10 sm:my-9;
+    @apply my-8 h-px w-full bg-white/12 sm:my-10;
   }
 
   .site-footer-link {
-    @apply text-sm text-white/55 transition-[color,opacity] duration-250 ease-out hover:text-white motion-reduce:transition-none;
+    @apply text-sm text-white/60 transition-[color,opacity] duration-250 ease-out hover:text-white/90 motion-reduce:transition-none;
   }
 
   /* ── Experience timeline ── */
@@ -582,7 +633,7 @@ body {
   }
 
   .experience-card {
-    @apply min-w-0 rounded-2xl border border-border/80 bg-white p-5 shadow-[var(--shadow-md)] sm:p-6;
+    @apply min-w-0 rounded-[var(--radius-xl)] border border-border/70 bg-white p-6 shadow-[var(--shadow-md)] sm:p-7;
   }
 
   .experience-card--interactive {
@@ -596,7 +647,7 @@ body {
   }
 
   .experience-card--featured {
-    @apply border-accent/25 border-l-4 border-l-accent pl-[calc(1.25rem-3px)] sm:pl-[calc(1.5rem-3px)];
+    @apply border-accent/20 border-l-4 border-l-accent pl-[calc(1.5rem-3px)] sm:pl-[calc(1.75rem-3px)];
   }
 
   .experience-card--highlight {
@@ -604,7 +655,7 @@ body {
   }
 
   .experience-card--highlight .experience-header {
-    @apply -mx-5 -mt-5 border-b border-accent/10 bg-accent-soft/50 px-5 pt-5 pb-4 sm:-mx-6 sm:-mt-6 sm:px-6 sm:pt-6;
+    @apply -mx-6 -mt-6 border-b border-accent/10 bg-accent-soft/45 px-6 pt-6 pb-4 sm:-mx-7 sm:-mt-7 sm:px-7 sm:pt-7;
   }
 
   .experience-header {
@@ -656,7 +707,7 @@ body {
   }
 
   .experience-card--compact {
-    @apply bg-white/90 p-5 sm:p-6;
+    @apply bg-white p-6 sm:p-7;
   }
 
   .experience-compact-intro {
@@ -702,7 +753,7 @@ body {
 
   /* ── Hero ── */
   .hero-section {
-    @apply relative isolate flex min-h-[min(85vh,42rem)] scroll-mt-[var(--nav-height)] items-center overflow-hidden border-b border-border sm:min-h-[min(88vh,44rem)];
+    @apply relative isolate flex min-h-[min(82vh,40rem)] scroll-mt-[var(--nav-height)] items-center overflow-hidden border-b border-border/80 sm:min-h-[min(86vh,44rem)];
   }
 
   .hero-background {
@@ -723,11 +774,17 @@ body {
   }
 
   .hero-overlay {
-    @apply absolute inset-0 bg-gradient-to-br from-primary-dark/92 via-primary-dark/82 to-primary/70;
+    background: linear-gradient(
+      135deg,
+      rgb(15 23 42 / 0.94) 0%,
+      rgb(15 23 42 / 0.86) 45%,
+      rgb(30 41 59 / 0.78) 100%
+    );
+    @apply absolute inset-0;
   }
 
   .hero-content {
-    @apply relative z-10 w-full py-24 sm:py-28 lg:py-32;
+    @apply relative z-10 w-full py-20 sm:py-28 lg:py-32;
   }
 
   .hero-inner {
@@ -757,21 +814,28 @@ body {
 
   .hero-name {
     @apply text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl md:leading-tight lg:text-[3.25rem];
+    text-shadow: 0 2px 24px rgb(0 0 0 / 0.25);
   }
 
   .hero-role {
-    @apply mt-4 text-lg font-medium tracking-tight text-white/90 sm:mt-5 sm:text-xl md:text-2xl;
+    @apply mt-4 text-lg font-medium tracking-tight text-white/95 sm:mt-5 sm:text-xl md:text-2xl;
+    text-shadow: 0 1px 12px rgb(0 0 0 / 0.2);
   }
 
   .hero-summary {
-    @apply mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:mt-8 sm:text-lg;
+    @apply mx-auto mt-6 max-w-2xl text-base leading-[1.7] text-white/85 sm:mt-8 sm:text-lg;
+    text-shadow: 0 1px 8px rgb(0 0 0 / 0.15);
   }
 
   .hero-actions {
-    @apply mt-10 flex flex-col items-center gap-2.5 sm:mt-12 sm:flex-row sm:justify-center;
+    @apply mt-10 flex w-full max-w-md flex-col items-stretch gap-3 sm:mx-auto sm:mt-12 sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-4;
+  }
+
+  .hero-actions .btn-base {
+    @apply w-full sm:w-auto;
   }
 
   .hero-fade {
-    @apply pointer-events-none absolute right-0 bottom-0 left-0 z-[1] h-24 bg-gradient-to-t from-white to-transparent sm:h-28;
+    @apply pointer-events-none absolute right-0 bottom-0 left-0 z-[1] h-20 bg-gradient-to-t from-white via-white/80 to-transparent sm:h-24;
   }
 }

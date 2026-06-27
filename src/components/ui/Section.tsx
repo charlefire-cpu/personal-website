@@ -75,7 +75,7 @@ export default function Section({
       )}
 
       <div ref={revealRef} className="reveal page-container relative z-[1]">
-        <header className="mb-10 sm:mb-12 lg:mb-14">
+        <header className="mb-11 sm:mb-12 lg:mb-14">
           {eyebrow && <p className="section-eyebrow">{eyebrow}</p>}
           <h2 id={headingId} className="section-heading">
             {title}
