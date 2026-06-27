@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
 
 export type SectionTone =
@@ -9,6 +9,9 @@ export type SectionTone =
   | 'experience'
   | 'contact'
 
+/** Maps to layered background styles in index.css (`--section-bg-image`). */
+export type SectionBackgroundVariant = 'accent' | 'contact'
+
 interface SectionProps {
   id?: string
   title: string
@@ -17,6 +20,9 @@ interface SectionProps {
   children: ReactNode
   className?: string
   tone?: SectionTone
+  /** Path from siteImages in src/config/images.ts */
+  backgroundImage?: string
+  backgroundVariant?: SectionBackgroundVariant
 }
 
 const toneClasses: Record<SectionTone, string> = {
@@ -39,16 +45,27 @@ export default function Section({
   children,
   className = '',
   tone = 'white',
+  backgroundImage,
+  backgroundVariant,
 }: SectionProps) {
   const headingId = id ? `${id}-heading` : undefined
-  const showTexture = texturedTones.includes(tone)
+  const showTexture = texturedTones.includes(tone) && !backgroundImage
   const showBridge = bridgedTones.includes(tone)
   const revealRef = useRevealOnScroll<HTMLDivElement>()
+
+  const backgroundClass = backgroundImage
+    ? `section-bg-image section-bg-image--${backgroundVariant ?? 'accent'}`
+    : ''
+
+  const sectionStyle: CSSProperties | undefined = backgroundImage
+    ? ({ '--section-bg-image': `url(${backgroundImage})` } as CSSProperties)
+    : undefined
 
   return (
     <section
       id={id}
-      className={`section-base ${toneClasses[tone]} ${className}`}
+      className={`section-base ${toneClasses[tone]} ${backgroundClass} ${className}`.trim()}
+      style={sectionStyle}
       aria-labelledby={headingId}
     >
       {showBridge && <div className="section-bridge" aria-hidden="true" />}

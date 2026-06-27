@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react'
+import { siteImages } from '../config/images'
 import { profile } from '../data/profile'
 import {
   EnvelopeIcon,
@@ -46,7 +47,15 @@ export default function Contact() {
   }>
 
   return (
-    <Section id={id} title={title} eyebrow="Get in touch" tone="contact" description={message}>
+    <Section
+      id={id}
+      title={title}
+      eyebrow="Get in touch"
+      tone="contact"
+      description={message}
+      backgroundImage={siteImages.contactBg}
+      backgroundVariant="contact"
+    >
       <ul className="card-grid-2 reveal-stagger">
         {contactItems.map((item) => {
           const Icon = iconMap[item.label] ?? EnvelopeIcon

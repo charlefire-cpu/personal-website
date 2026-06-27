@@ -39,9 +39,6 @@ export interface ContactLabels {
 const RESUME_PATH = `${import.meta.env.BASE_URL}resume/Charmaine-Buffe-Resume.pdf`
 const RESUME_FILENAME = 'Charmaine-Buffe-Resume.pdf'
 
-/** Replace `public/images/hero-background.jpg` to update the hero background. */
-export const HERO_BACKGROUND_IMAGE = `${import.meta.env.BASE_URL}images/hero-background.jpg`
-
 export interface Profile {
   name: string
   navBrand: string
@@ -72,7 +69,6 @@ export interface Profile {
   }
   hero: {
     id: string
-    backgroundImage: string
     ctas: HeroCta[]
   }
   sections: {
@@ -229,7 +225,6 @@ export const profile: Profile = {
   },
   hero: {
     id: 'home',
-    backgroundImage: HERO_BACKGROUND_IMAGE,
     ctas: [
       { label: 'View Experience', href: '#experience', variant: 'outline' },
       {

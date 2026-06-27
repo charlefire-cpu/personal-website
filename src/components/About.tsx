@@ -1,3 +1,4 @@
+import { siteImages } from '../config/images'
 import { profile } from '../data/profile'
 import Section from './ui/Section'
 
@@ -5,7 +6,14 @@ export default function About() {
   const { id, title } = profile.sections.about
 
   return (
-    <Section id={id} title={title} eyebrow="Overview" tone="white">
+    <Section
+      id={id}
+      title={title}
+      eyebrow="Overview"
+      tone="white"
+      backgroundImage={siteImages.aboutAccent}
+      backgroundVariant="accent"
+    >
       <div className="card max-w-3xl">
         <div className="card-body space-y-5 sm:space-y-6">
           {profile.about.map((paragraph) => (

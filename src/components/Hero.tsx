@@ -1,4 +1,5 @@
 import { profile } from '../data/profile'
+import { siteImages, toBackgroundImageUrl } from '../config/images'
 import Button from './ui/Button'
 import { ArrowDownTrayIcon, ArrowRightIcon } from './ui/icons'
 
@@ -7,7 +8,7 @@ function resolveCtaVariant(variant: 'primary' | 'secondary' | 'outline') {
 }
 
 export default function Hero() {
-  const { id, ctas, backgroundImage } = profile.hero
+  const { id, ctas } = profile.hero
 
   return (
     <section
@@ -15,9 +16,10 @@ export default function Hero() {
       className="hero-section"
       aria-labelledby="hero-heading"
     >
+      {/* Background: replace public/assets/images/hero-bg.jpg (see src/config/images.ts) */}
       <div
         className="hero-background"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
+        style={{ backgroundImage: toBackgroundImageUrl(siteImages.heroBg) }}
         aria-hidden="true"
       />
 
