@@ -74,31 +74,29 @@ export default function Contact() {
 
   return (
     <Section id={id} title={title} tone="contact" description={message}>
-      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+      <ul className="card-grid-2">
         {contactItems.map((item) => {
           const Icon = iconMap[item.label] ?? EmailIcon
 
           return (
-            <li key={item.label} className="card min-w-0">
-              <div className="flex items-start gap-4">
+            <li key={item.label} className="card card-interactive card-contact">
+              <div className="card-contact-inner">
                 <span className="icon-circle">
                   <Icon />
                 </span>
-                <div className="min-w-0">
+                <div className="card-contact-content">
                   <span className="text-label">{item.label}</span>
                   {item.href ? (
                     <a
                       href={item.href}
                       target={item.external ? '_blank' : undefined}
                       rel={item.external ? 'noopener noreferrer' : undefined}
-                      className="link-hover mt-1.5 block break-all text-sm font-medium text-accent hover:text-accent-hover sm:text-base"
+                      className="card-contact-link"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <span className="mt-1.5 block break-words text-sm font-medium text-primary sm:text-base">
-                      {item.value}
-                    </span>
+                    <span className="card-contact-value">{item.value}</span>
                   )}
                 </div>
               </div>

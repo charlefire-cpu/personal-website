@@ -6,20 +6,20 @@ export default function TechnicalSkills() {
 
   return (
     <Section title={title} tone="gradient">
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <div className="card-grid-2">
         {profile.skillGroups.map((group) => (
-          <div key={group.category} className="card min-w-0">
-            <h3 className="text-label mb-4 text-primary">
-              {group.category}
-            </h3>
-            <ul className="flex flex-wrap gap-2">
+          <article key={group.category} className="card card-interactive min-w-0">
+            <header className="card-header">
+              <h3 className="card-title">{group.category}</h3>
+            </header>
+            <ul className="skill-tags">
               {group.skills.map((skill) => (
                 <li key={skill} className="skill-tag">
                   {skill}
                 </li>
               ))}
             </ul>
-          </div>
+          </article>
         ))}
       </div>
     </Section>

@@ -24,7 +24,7 @@ export default function Experience() {
             >
               <div className="timeline-dot" aria-hidden="true" />
 
-              <div className="card">
+              <div className="card card-interactive">
                 <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-8">
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2.5">
@@ -46,17 +46,11 @@ export default function Experience() {
                 </div>
 
                 {role.highlights && role.highlights.length > 0 && (
-                  <ul className="mt-5 space-y-2.5 border-t border-border pt-5 sm:mt-6 sm:pt-6">
+                  <ul className="card-list mt-6 border-t border-border/70 pt-6">
                     {role.highlights.map((highlight) => (
-                      <li
-                        key={highlight}
-                        className="flex gap-3 text-body-sm sm:gap-3.5"
-                      >
-                        <span
-                          className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
-                          aria-hidden="true"
-                        />
-                        <span className="min-w-0 break-words">{highlight}</span>
+                      <li key={highlight} className="card-list-item">
+                        <span className="card-list-marker" aria-hidden="true" />
+                        <span className="min-w-0 flex-1 break-words">{highlight}</span>
                       </li>
                     ))}
                   </ul>
@@ -73,7 +67,7 @@ export default function Experience() {
               aria-hidden="true"
             />
 
-            <div className="card">
+            <div className="card card-interactive">
               <h3 className="text-h3">{earlierExperienceTitle}</h3>
               <p className="text-body-sm mt-2">
                 {earlierExperienceDescription}

@@ -9,8 +9,8 @@ export default function Education() {
     <Section id={id} title={title} tone="white">
       <div className="card max-w-xl">
         <h3 className="text-h3">{degree}</h3>
-        <p className="text-body mt-2 break-words">{school}</p>
-        <p className="text-accent-label mt-3">{year}</p>
+        <p className="card-body mt-3 break-words">{school}</p>
+        <p className="text-accent-label mt-4">{year}</p>
       </div>
     </Section>
   )

@@ -7,7 +7,7 @@ export default function About() {
   return (
     <Section id={id} title={title} tone="white">
       <div className="card max-w-3xl">
-        <div className="space-y-5 text-body sm:space-y-6">
+        <div className="card-body space-y-5 sm:space-y-6">
           {profile.about.map((paragraph) => (
             <p key={paragraph.slice(0, 40)} className="break-words">
               {paragraph}
