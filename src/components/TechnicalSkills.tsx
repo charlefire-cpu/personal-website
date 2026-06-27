@@ -5,22 +5,16 @@ export default function TechnicalSkills() {
   const { title } = profile.sections.technicalSkills
 
   return (
-    <Section title={title} alternate>
-      <div className="grid gap-6 sm:grid-cols-2">
+    <Section title={title}>
+      <div className="grid gap-5 sm:grid-cols-2">
         {profile.skillGroups.map((group) => (
-          <div
-            key={group.category}
-            className="rounded-lg border border-border bg-white p-5"
-          >
-            <h3 className="mb-3 text-sm font-semibold text-primary">
+          <div key={group.category} className="card">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-primary">
               {group.category}
             </h3>
             <ul className="flex flex-wrap gap-2">
               {group.skills.map((skill) => (
-                <li
-                  key={skill}
-                  className="rounded-full bg-surface px-3 py-1 text-xs font-medium text-muted"
-                >
+                <li key={skill} className="skill-tag">
                   {skill}
                 </li>
               ))}

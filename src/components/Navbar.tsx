@@ -7,26 +7,25 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-border bg-white/95 shadow-sm backdrop-blur-sm">
       <nav
-        className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+        className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8"
         aria-label="Main navigation"
       >
         <a
           href="#home"
-          className="text-lg font-semibold text-primary transition-colors hover:text-accent"
+          className="text-base font-semibold tracking-tight text-primary transition-colors hover:text-accent sm:text-lg"
           onClick={closeMenu}
         >
           {profile.navBrand}
         </a>
 
-        {/* Desktop navigation */}
-        <ul className="hidden items-center gap-6 md:flex">
+        <ul className="hidden items-center gap-1 md:flex">
           {profile.navigation.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className="text-sm font-medium text-muted transition-colors hover:text-accent"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-primary"
               >
                 {item.label}
               </a>
@@ -34,10 +33,9 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile menu button */}
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-lg p-2 text-primary hover:bg-surface md:hidden"
+          className="inline-flex items-center justify-center rounded-lg p-2 text-primary transition-colors hover:bg-surface md:hidden"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -56,15 +54,14 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile navigation */}
       {isOpen && (
-        <div id="mobile-menu" className="border-t border-border md:hidden">
-          <ul className="flex flex-col px-4 py-3">
+        <div id="mobile-menu" className="border-t border-border bg-white md:hidden">
+          <ul className="flex flex-col gap-1 px-4 py-4">
             {profile.navigation.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="block rounded-lg px-3 py-2.5 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-accent"
+                  className="block rounded-lg px-3 py-3 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-primary"
                   onClick={closeMenu}
                 >
                   {item.label}

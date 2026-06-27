@@ -5,18 +5,18 @@ export default function CoreCompetencies() {
   const { id, title } = profile.sections.coreCompetencies
 
   return (
-    <Section id={id} title={title}>
-      <ul className="grid gap-3 sm:grid-cols-2">
+    <Section id={id} title={title} alternate>
+      <ul className="grid gap-4 sm:grid-cols-2">
         {profile.competencies.map((competency) => (
           <li
             key={competency}
-            className="flex items-start gap-2 rounded-lg border border-border bg-white px-4 py-3 text-sm text-muted"
+            className="card flex items-start gap-3 p-5"
           >
             <span
-              className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+              className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
               aria-hidden="true"
             />
-            {competency}
+            <span className="text-sm leading-relaxed text-primary">{competency}</span>
           </li>
         ))}
       </ul>

@@ -18,11 +18,11 @@ type ButtonProps = ButtonAsButton | ButtonAsLink
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-accent text-white hover:bg-accent-hover focus-visible:ring-accent',
+    'bg-accent text-white shadow-sm hover:bg-accent-hover focus-visible:ring-accent',
   secondary:
-    'bg-primary text-white hover:bg-primary-dark focus-visible:ring-primary',
+    'bg-primary text-white shadow-sm hover:bg-primary-dark focus-visible:ring-primary',
   outline:
-    'border-2 border-accent text-accent hover:bg-accent hover:text-white focus-visible:ring-accent',
+    'border border-accent bg-white text-accent hover:bg-accent-soft focus-visible:ring-accent',
 }
 
 export default function Button({
@@ -31,7 +31,7 @@ export default function Button({
   className = '',
   ...props
 }: ButtonProps) {
-  const styles = `inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${variantStyles[variant]} ${className}`
+  const styles = `inline-flex items-center justify-center rounded-lg px-6 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${variantStyles[variant]} ${className}`
 
   if ('href' in props && props.href) {
     const { href, ...linkProps } = props

@@ -6,10 +6,12 @@ export default function About() {
 
   return (
     <Section id={id} title={title}>
-      <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted">
-        {profile.about.map((paragraph) => (
-          <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-        ))}
+      <div className="card max-w-3xl">
+        <div className="space-y-5 text-base leading-relaxed text-muted">
+          {profile.about.map((paragraph) => (
+            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+          ))}
+        </div>
       </div>
     </Section>
   )
