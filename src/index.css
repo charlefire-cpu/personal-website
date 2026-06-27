@@ -799,9 +799,9 @@ body {
   .hero-overlay {
     background: linear-gradient(
       180deg,
-      rgb(2 6 23 / 0.62) 0%,
-      rgb(2 6 23 / 0.52) 45%,
-      rgb(2 6 23 / 0.38) 100%
+      rgb(2 6 23 / 0.5) 0%,
+      rgb(2 6 23 / 0.4) 45%,
+      rgb(2 6 23 / 0.3) 100%
     );
     @apply absolute inset-0;
   }
@@ -811,7 +811,20 @@ body {
   }
 
   .hero-inner {
-    @apply mx-auto max-w-3xl text-center;
+    @apply mx-auto w-full max-w-[720px] text-center;
+  }
+
+  .hero-panel {
+    @apply rounded-3xl px-6 py-8 sm:px-10 sm:py-10;
+    background:
+      radial-gradient(ellipse 90% 80% at 50% 45%, rgb(2 6 23 / 0.32), rgb(2 6 23 / 0.22) 100%);
+    backdrop-filter: blur(2px);
+  }
+
+  @supports not (backdrop-filter: blur(2px)) {
+    .hero-panel {
+      background: rgb(2 6 23 / 0.38);
+    }
   }
 
   .hero-enter > * {
@@ -837,17 +850,21 @@ body {
 
   .hero-name {
     @apply text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl md:leading-tight lg:text-[3.25rem];
-    text-shadow: 0 2px 20px rgb(0 0 0 / 0.45);
+    text-shadow:
+      0 1px 2px rgb(0 0 0 / 0.35),
+      0 4px 24px rgb(0 0 0 / 0.45);
   }
 
   .hero-role {
-    @apply mt-4 text-lg font-medium tracking-tight text-white/95 sm:mt-5 sm:text-xl md:text-2xl;
-    text-shadow: 0 1px 14px rgb(0 0 0 / 0.4);
+    @apply mt-4 text-lg font-medium tracking-tight text-white sm:mt-5 sm:text-xl md:text-2xl;
+    text-shadow:
+      0 1px 2px rgb(0 0 0 / 0.3),
+      0 2px 16px rgb(0 0 0 / 0.4);
   }
 
   .hero-summary {
-    @apply mx-auto mt-6 max-w-2xl text-base leading-[1.7] text-white/90 sm:mt-8 sm:text-lg;
-    text-shadow: 0 1px 10px rgb(0 0 0 / 0.35);
+    @apply mx-auto mt-6 max-w-[680px] text-base leading-[1.75] text-white/95 sm:mt-8 sm:text-lg;
+    text-shadow: 0 1px 12px rgb(0 0 0 / 0.4);
   }
 
   .hero-actions {
